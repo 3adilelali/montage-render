@@ -28,10 +28,8 @@ const chunks = ci > -1 ? Number(process.argv[ci + 1]) : Math.min(20, Math.max(4,
 console.log(`frames ${frames} → ${chunks} machines`);
 
 // 1) engine code → repo (public/, node_modules and the keys are in .gitignore)
-if (!fs.existsSync(path.join(ENGINE, '.git'))) {
-	run('git', ['init', '-b', 'main']);
-	run('git', ['remote', 'add', 'origin', `https://github.com/${REPO}.git`]);
-}
+if (!fs.existsSync(path.join(ENGINE, '.git'))) run('git', ['init', '-b', 'main']);
+if (!run('git', ['remote'], {capture: true}).includes('origin')) run('git', ['remote', 'add', 'origin', `https://github.com/${REPO}.git`]);
 run('git', ['add', '-A']);
 const tracked = run('git', ['ls-files'], {capture: true});
 if (/مفتاح|\.env|ElevenLabs\.txt|^public\//m.test(tracked)) throw new Error('a key or public/ file would be uploaded — stopped');
