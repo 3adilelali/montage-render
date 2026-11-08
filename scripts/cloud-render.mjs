@@ -38,7 +38,8 @@ run('git', ['push', '-q', '-u', 'origin', 'main']);
 
 // 2) job.tar = public/ minus the working copies of the voice
 const tag = `job-${Date.now()}`;
-const tar = path.join(os.tmpdir(), `${tag}.tar`);
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'render-'));
+const tar = path.join(tmp, 'job.tar');  // the asset name must be job.tar (render.yml downloads that)
 const SKIP = /^public\/(_study|thumbnail)\/|^public\/explainer\/(voice\.(raw|no-[^.]+|before-pauses)\.wav|captions\.before-pauses\.json)$/;
 const py = `import tarfile,os,re,sys
 skip=re.compile(sys.argv[2])
@@ -75,6 +76,6 @@ try {
 } finally {
 	// 5) nothing stays on GitHub (the run's chunk artifacts expire by themselves after 1 day)
 	gh(['release', 'delete', tag, '-R', REPO, '--cleanup-tag', '-y'], {ok: true});
-	fs.rmSync(tar, {force: true});
+	fs.rmSync(tmp, {recursive: true, force: true});
 	if (!ok) process.exitCode = 1;
 }
