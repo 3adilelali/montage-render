@@ -1,0 +1,21 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+
+# Temporary frames of scripts/study.mjs
+public/_study
+
+# cloud render: only engine code goes to GitHub, never assets, recordings or keys
+/public/
+*مفتاح*
+*.key
+*.txt
+.env*
+/.tmp/
+/out/
+*.log

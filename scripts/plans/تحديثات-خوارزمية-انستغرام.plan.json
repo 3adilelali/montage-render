@@ -1,0 +1,2879 @@
+{
+ "source": "IMG_1100.MOV@1791729163188",
+ "scenes": [
+  {
+   "from": 0,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:fire",
+         "word": 3,
+         "size": "s"
+        },
+        {
+         "type": "counter",
+         "to": 100000,
+         "word": 4,
+         "size": "s",
+         "tone": "green",
+         "frames": 16
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:yawning-face",
+         "word": 7,
+         "size": "s"
+        },
+        {
+         "type": "counter",
+         "to": 1000,
+         "word": 10,
+         "size": "s",
+         "tone": "red",
+         "frames": 10
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 220
+    },
+    {
+     "type": "text",
+     "text": "بنفس الجودة!",
+     "word": 9,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 14,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "file": "ai-info-علامة-على-بوست.png",
+     "word": 18,
+     "look": "card",
+     "size": "l",
+     "corner": "?",
+     "cornerAt": 24
+    },
+    {
+     "type": "text",
+     "text": "علامة AI… على بوستات عادية؟",
+     "word": 21,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 27,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "skill-icons:instagram",
+       "word": 27
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:balance-scale",
+       "word": 30
+      }
+     ],
+     "gap": 120
+    },
+    {
+     "type": "text",
+     "text": "غيّر طريقة حكمه على محتواك",
+     "word": 28,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 33,
+   "items": [
+    {
+     "type": "steps",
+     "labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "style": "chips",
+     "word": 36
+    },
+    {
+     "type": "text",
+     "text": "6 تحديثات",
+     "word": 35,
+     "size": "l"
+    }
+   ]
+  },
+  {
+   "from": 38,
+   "transition": "trail",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "آدم-موسيري-مدير-انستغرام.jpg",
+       "word": 40,
+       "look": "circle",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "آدم موسيري\nمدير إنستغرام",
+       "word": 40,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 43,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "badge",
+     "text": "6",
+     "shape": "diamond",
+     "word": 43
+    },
+    {
+     "type": "text",
+     "text": "بيغيّر نوع المحتوى اللي بتنزله",
+     "word": 46,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 53,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "1",
+       "word": 53,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "القمع",
+       "word": 53,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 59,
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "skill-icons:instagram",
+       "word": 61,
+       "size": "s"
+      },
+      {
+       "type": "text",
+       "text": "الاحتفاظ… أهم من أي وقت",
+       "word": 64,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 69,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:stopwatch",
+         "word": 76,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "تفرّج أطول",
+         "word": 76,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:left-arrow",
+       "word": 77,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:chart-increasing",
+         "word": 79,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "وصول أكثر",
+         "word": 77,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 81,
+   "items": [
+    {
+     "type": "steps",
+     "labels": [
+      "1",
+      "2",
+      "3"
+     ],
+     "style": "chips",
+     "word": 85
+    },
+    {
+     "type": "text",
+     "text": "3 مراحل",
+     "word": 83,
+     "size": "l"
+    }
+   ]
+  },
+  {
+   "from": 87,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:convenience-store",
+     "word": 88,
+     "size": "xl"
+    }
+   ]
+  },
+  {
+   "from": 91,
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:door",
+         "word": 93,
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "1. الواجهة",
+         "word": 93,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "card",
+       "text": "= نسبة التخطّي",
+       "word": 94
+      }
+     ],
+     "gap": 80
+    }
+   ]
+  },
+  {
+   "from": 97,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:person-walking",
+       "word": 99
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:stopwatch",
+       "word": 104
+      }
+     ],
+     "gap": 100
+    },
+    {
+     "type": "text",
+     "text": "كمّل بعد أول 3 ثواني؟",
+     "word": 100,
+     "size": "m"
+    }
+   ]
+  },
+  {
+   "from": 105,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:dashing-away",
+       "word": 108
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:door",
+       "word": 109,
+       "tint": "gray",
+       "tintAt": 109
+      }
+     ],
+     "gap": 120
+    },
+    {
+     "type": "text",
+     "text": "أغلبهم بيتخطوا؟",
+     "word": 107,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 110,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:red-heart",
+       "word": 117,
+       "tint": "gray",
+       "tintAt": 118
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:bookmark",
+       "word": 119,
+       "tint": "gray",
+       "tintAt": 121
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:speech-balloon",
+       "word": 121,
+       "tint": "gray",
+       "tintAt": 121
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "ما بيشوف أي شي ثاني",
+     "word": 112,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 122,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "meter",
+     "label": "نسبة التخطّي",
+     "value": 50,
+     "word": 122,
+     "tone": "white",
+     "steps": [
+      {
+       "word": 123,
+       "value": 50
+      },
+      {
+       "word": 126,
+       "value": 30
+      },
+      {
+       "word": 131,
+       "value": 20
+      }
+     ],
+     "marks": [
+      {
+       "at": 50,
+       "text": "مقبول",
+       "tone": "white",
+       "word": 125
+      },
+      {
+       "at": 30,
+       "text": "جيد",
+       "tone": "green",
+       "word": 128
+      },
+      {
+       "at": 20,
+       "text": "ممتاز",
+       "tone": "green",
+       "word": 133
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 134,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:couch-and-lamp",
+       "word": 136,
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "2. الجلوس\nلمدة أطول",
+       "word": 136,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 139,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:hourglass-not-done",
+       "word": 140,
+       "size": "s"
+      },
+      {
+       "type": "text",
+       "text": "= الاحتفاظ",
+       "word": 140,
+       "size": "m"
+      }
+     ],
+     "gap": 40
+    },
+    {
+     "type": "text",
+     "text": "كم واحد كمّل لآخر الفيديو؟",
+     "word": 144,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 147,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "meter",
+     "label": "كمّلوا لآخر الفيديو",
+     "value": 58,
+     "word": 148,
+     "tone": "green",
+     "marks": [
+      {
+       "at": 50,
+       "text": "50% = احتفاظ قوي",
+       "tone": "green",
+       "word": 153
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 154,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:person-raising-hand",
+       "word": 156
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:person",
+       "word": 158,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:person-walking",
+       "word": 158,
+       "size": "s"
+      }
+     ],
+     "gap": 40
+    },
+    {
+     "type": "text",
+     "text": "3. الزبون اللي بيجيب أصحابه",
+     "word": 156,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 159,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:mobile-phone-with-arrow",
+       "word": 160
+      },
+      {
+       "type": "text",
+       "text": "= المشاركات",
+       "word": 159,
+       "size": "m"
+      }
+     ],
+     "gap": 40
+    }
+   ]
+  },
+  {
+   "from": 161,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:thumbs-up",
+         "word": 165,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "فيديو حلو",
+         "word": 165,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:rocket",
+         "word": 166,
+         "size": "s"
+        },
+        {
+         "type": "counter",
+         "to": 1000000,
+         "word": 166,
+         "size": "s",
+         "tone": "green",
+         "frames": 16
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 200
+    }
+   ]
+  },
+  {
+   "from": 169,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "reel-insights-احصائيات.jpg",
+       "word": 172,
+       "look": "phone",
+       "size": "l",
+       "highlights": [
+        {
+         "x": 3,
+         "y": 59.5,
+         "w": 94,
+         "h": 7.5,
+         "tone": "red",
+         "word": 176
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "text": "افتح إحصائيات\nأي ريلز",
+       "word": 173,
+       "size": "m"
+      }
+     ],
+     "gap": 90
+    }
+   ]
+  },
+  {
+   "from": 179,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:chart-increasing",
+         "word": 179,
+         "size": "s",
+         "tint": "red"
+        },
+        {
+         "type": "text",
+         "text": "التخطّي عالي؟",
+         "word": 179,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:left-arrow",
+       "word": 181,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:fishing-pole",
+         "word": 182,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الهوك ضعيف",
+         "word": 180,
+         "size": "s",
+         "tone": "red"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 184,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:yawning-face",
+         "word": 192,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "جزء ممل",
+         "word": 191,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:left-arrow",
+       "word": 193,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:scissors",
+         "word": 193,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "احذفه",
+         "word": 191,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 194,
+   "transition": "trail",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:mobile-phone-with-arrow",
+       "word": 200,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "بعدها: محتوى بينشارك",
+       "word": 197,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 201,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "2",
+       "word": 201,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "علامة AI",
+       "word": 201,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    },
+    {
+     "type": "text",
+     "text": "ويمكن أكثر واحد بيهمك",
+     "word": 204,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 207,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "ai-info-علامة-على-بوست.png",
+       "word": 210,
+       "look": "card",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "على محتوى\nأكثر بكثير",
+       "word": 214,
+       "size": "m",
+       "tone": "red"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 219,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:person",
+       "word": 221,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "file": "canva-شعار.jpg",
+       "word": 225,
+       "look": "card",
+       "size": "s"
+      }
+     ],
+     "gap": 80
+    },
+    {
+     "type": "text",
+     "text": "شال خلفية صورته بـ Canva",
+     "word": 223,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 226,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "carousel",
+       "word": 227,
+       "every": 14,
+       "slides": [
+        {
+         "icon": "fluent-emoji-flat:framed-picture",
+         "text": "صورتي"
+        },
+        {
+         "icon": "fluent-emoji-flat:light-bulb",
+         "text": "نصيحة 1"
+        },
+        {
+         "icon": "fluent-emoji-flat:bookmark",
+         "text": "احفظه"
+        }
+       ]
+      },
+      {
+       "type": "visual",
+       "file": "ai-info-نافذة.png",
+       "word": 230,
+       "look": "card",
+       "size": "m"
+      }
+     ],
+     "gap": 80
+    }
+   ]
+  },
+  {
+   "from": 233,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:busts-in-silhouette",
+       "word": 235
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:no-entry",
+       "word": 237,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:robot",
+       "word": 239,
+       "tint": "gray",
+       "tintAt": 240
+      }
+     ],
+     "gap": 70
+    },
+    {
+     "type": "text",
+     "text": "الناس ضد المحتوى المولّد بالكامل",
+     "word": 238,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 241,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:ghost",
+         "word": 242,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "حسابات وهمية",
+         "word": 242,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:performing-arts",
+         "word": 243,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "وجوه مزيفة",
+         "word": 243,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:speaker-high-volume",
+         "word": 244,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "أصوات مزيفة",
+         "word": 244,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:memo",
+         "word": 247,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "كلام منسوخ",
+         "word": 245,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 40
+    }
+   ]
+  },
+  {
+   "from": 248,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:label",
+     "word": 251,
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "العلامة على أشياء أكثر",
+     "word": 251,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 255,
+   "transition": "flash",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "text",
+       "text": "الخبر المهم:",
+       "word": 256,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:chart-increasing",
+       "word": 260,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "العلامة ما بتقلل وصولك",
+       "word": 258,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 262,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "skill-icons:instagram",
+       "word": 264,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:robot",
+       "word": 266,
+       "size": "s"
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "ما بيعاقبك لأنك استخدمت AI",
+     "word": 264,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 268,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:eyes",
+     "word": 272,
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "اللي بيعاقبك فعلاً: المشاهد",
+     "word": 270,
+     "size": "m",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 273,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:memo",
+         "word": 277,
+         "size": "s",
+         "tint": "gray"
+        },
+        {
+         "type": "text",
+         "text": "كلام عام",
+         "word": 277,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:left-arrow",
+       "word": 281,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:dashing-away",
+         "word": 281,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "تخطّي",
+         "word": 279,
+         "size": "s",
+         "tone": "red"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 282,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "card",
+     "text": "المشكلة مو بالذكاء الاصطناعي",
+     "word": 283
+    },
+    {
+     "type": "text",
+     "text": "المشكلة: محتوى AI ما بيشبهك",
+     "word": 288,
+     "size": "m",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 292,
+   "transition": "trail",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:pushpin",
+     "word": 293,
+     "size": "m"
+    },
+    {
+     "type": "text",
+     "text": "رح نرجع لها بالآخر",
+     "word": 293,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 296,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "3",
+       "word": 296,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "النص اللي\nبيختفي بسرعة",
+       "word": 296,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 301,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:high-voltage",
+       "word": 307,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "خلص زمن النص اللي بيومض",
+       "word": 304,
+       "size": "m",
+       "tone": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 308,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "card",
+       "text": "فقرة كاملة من النص\nبتطلع على الريلز\nوبتختفي بسرعة…",
+       "word": 313,
+       "out": 315
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:stopwatch",
+         "word": 315,
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "ثانيتين… واختفت!",
+         "word": 313,
+         "size": "m",
+         "tone": "red"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 316,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:pause-button",
+         "word": 318,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "توقف",
+         "word": 318,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:counterclockwise-arrows-button",
+         "word": 321,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "تعيد",
+         "word": 318,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 150
+    }
+   ]
+  },
+  {
+   "from": 322,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "skill-icons:instagram",
+       "word": 323,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:chart-decreasing",
+       "word": 330,
+       "tint": "red",
+       "tintAt": 330
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "هالنوع رح يوصل لناس أقل",
+     "word": 327,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 331,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:megaphone",
+       "word": 335
+      },
+      {
+       "type": "text",
+       "text": "اقرأ النص\nبصوت عالي",
+       "word": 333,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 337,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:hourglass-not-done",
+       "word": 339
+      },
+      {
+       "type": "text",
+       "text": "ما لحقت؟\nطوّل مدته",
+       "word": 343,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 346,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:speech-balloon",
+       "word": 346
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:check-mark-button",
+       "word": 353,
+       "size": "s",
+       "tint": "green"
+      }
+     ],
+     "gap": 80
+    },
+    {
+     "type": "text",
+     "text": "الترجمة مع كلامك: عادي",
+     "word": 350,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 360,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "4",
+       "word": 360,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "تطبيقات المونتاج",
+       "word": 360,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 363,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:partying-face",
+     "word": 367,
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "خبر حلو",
+     "word": 364,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 368,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:clapper-board",
+       "word": 368
+      },
+      {
+       "type": "visual",
+       "icon": "skill-icons:instagram",
+       "word": 370,
+       "size": "s"
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "ما بيقلل مشاهداتك",
+     "word": 371,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 374,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "capcut-شعار.png",
+       "word": 375,
+       "look": "plain",
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "logos:adobe-premiere",
+       "word": 378,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:laptop",
+       "word": 379,
+       "size": "s"
+      }
+     ],
+     "gap": 90
+    }
+   ]
+  },
+  {
+   "from": 380,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:rolled-up-newspaper",
+       "word": 382,
+       "tint": "red",
+       "tintAt": 385,
+       "corner": "fluent-emoji-flat:cross-mark",
+       "cornerAt": 385
+      },
+      {
+       "type": "visual",
+       "file": "آدم-موسيري-مدير-انستغرام.jpg",
+       "word": 386,
+       "look": "circle",
+       "size": "s"
+      }
+     ],
+     "gap": 120
+    },
+    {
+     "type": "text",
+     "text": "ومدير إنستغرام نفاه بنفسه",
+     "word": 387,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 390,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "text",
+       "text": "بيهمه شي واحد:",
+       "word": 391,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:magnet",
+       "word": 396,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "هل المحتوى بيشد الناس؟",
+       "word": 396,
+       "size": "m",
+       "tone": "green"
+      },
+      {
+       "type": "text",
+       "text": "مو وين عملته",
+       "word": 397,
+       "size": "s"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 401,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "5",
+       "word": 401,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "الـ Trial Reels",
+       "word": 401,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 404,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "file": "trial-reel-اعداد.jpg",
+     "word": 407,
+     "look": "card",
+     "size": "l",
+     "corner": "fluent-emoji-flat:warning",
+     "cornerAt": 410,
+     "highlights": [
+      {
+       "x": 78,
+       "y": 30,
+       "w": 20,
+       "h": 18,
+       "tone": "red",
+       "word": 410
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 411,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:film-frames",
+         "word": 415,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نص أ",
+         "word": 415,
+         "size": "s"
+        }
+       ],
+       "gap": 16
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:film-frames",
+         "word": 416,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نص ب",
+         "word": 417,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 16
+      }
+     ],
+     "gap": 160
+    },
+    {
+     "type": "text",
+     "text": "نفس الفيديو… نص ثاني",
+     "word": 420,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 423,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:repeat-button",
+       "word": 426,
+       "tint": "red",
+       "tintAt": 426
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:chart-decreasing",
+       "word": 430,
+       "size": "s"
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "= مكرر، ووصول أقل",
+     "word": 426,
+     "size": "m",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 431,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "text",
+     "text": "لازم تغيير حقيقي",
+     "word": 436,
+     "size": "m",
+     "tone": "green"
+    },
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:fishing-pole",
+         "word": 437,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "هوك ثاني",
+         "word": 437,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:movie-camera",
+         "word": 440,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "لقطات ثانية",
+         "word": 440,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:light-bulb",
+         "word": 443,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "فكرة ثانية",
+         "word": 441,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 445,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "6",
+       "word": 445,
+       "tone": "green",
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "الكاروسيل",
+       "word": 445,
+       "size": "l"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 447,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "carousel",
+       "word": 447,
+       "at": [
+        450,
+        453,
+        454
+       ],
+       "slides": [
+        {
+         "icon": "fluent-emoji-flat:light-bulb",
+         "text": "الفكرة"
+        },
+        {
+         "icon": "fluent-emoji-flat:fishing-pole",
+         "text": "الهوك"
+        },
+        {
+         "icon": "fluent-emoji-flat:bar-chart",
+         "text": "الأرقام"
+        },
+        {
+         "icon": "fluent-emoji-flat:bookmark",
+         "text": "احفظه"
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "text": "مسيطر\nالآن",
+       "word": 452,
+       "size": "l",
+       "tone": "green"
+      }
+     ],
+     "gap": 90
+    }
+   ]
+  },
+  {
+   "from": 455,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:bar-chart",
+       "word": 456
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:man-technologist",
+       "word": 460
+      }
+     ],
+     "gap": 110
+    },
+    {
+     "type": "text",
+     "text": "دراسة لأحد أشهر خبراء إنستغرام",
+     "word": 459,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 462,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:spiral-calendar",
+       "word": 462
+      },
+      {
+       "type": "text",
+       "text": "آخر 90 يوم",
+       "word": 462,
+       "size": "l"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 465,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "bars",
+     "word": 465,
+     "bars": [
+      {
+       "label": "ريلز",
+       "value": 1,
+       "text": "1×",
+       "tone": "white",
+       "icon": "fluent-emoji-flat:clapper-board",
+       "word": 465
+      },
+      {
+       "label": "كاروسيل",
+       "value": 1.9,
+       "text": "1.9×",
+       "tone": "green",
+       "icon": "fluent-emoji-flat:framed-picture",
+       "word": 468
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 472,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:balance-scale",
+     "word": 473,
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "عرض وطلب",
+     "word": 472,
+     "size": "m"
+    }
+   ]
+  },
+  {
+   "from": 475,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:film-frames",
+       "word": 475,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:film-frames",
+       "word": 477,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:film-frames",
+       "word": 478,
+       "size": "s"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:film-frames",
+       "word": 478,
+       "size": "s"
+      }
+     ],
+     "gap": 40
+    },
+    {
+     "type": "text",
+     "text": "الكل عم ينزل ريلز",
+     "word": 478,
+     "size": "s"
+    },
+    {
+     "type": "text",
+     "text": "وقليل اللي بينزل كاروسيل",
+     "word": 479,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 483,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:open-book",
+         "word": 489,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "بتقرأ على راحتها",
+         "word": 489,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:muted-speaker",
+         "word": 493,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "بدون صوت",
+         "word": 493,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:pause-button",
+         "word": 496,
+         "size": "s",
+         "tint": "gray"
+        },
+        {
+         "type": "text",
+         "text": "بدون توقيف",
+         "word": 494,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 498,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:chart-decreasing",
+       "word": 504,
+       "size": "m",
+       "tint": "red",
+       "tintAt": 504
+      },
+      {
+       "type": "text",
+       "text": "كل محتواك ريلز؟",
+       "word": 500,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "عم تخسر كثير",
+       "word": 501,
+       "size": "m",
+       "tone": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 506,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:door",
+         "word": 513,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "التخطّي",
+         "word": 513,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:couch-and-lamp",
+         "word": 514,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الاحتفاظ",
+         "word": 514,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:mobile-phone-with-arrow",
+         "word": 515,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "المشاركة",
+         "word": 514,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 80
+    }
+   ]
+  },
+  {
+   "from": 516,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "2",
+       "word": 516,
+       "tone": "green",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "علامة AI ما بتقلل وصولك",
+       "word": 516,
+       "size": "m"
+      }
+     ],
+     "gap": 50
+    },
+    {
+     "type": "text",
+     "text": "المحتوى العام بيخسّرك جمهورك",
+     "word": 522,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 526,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "3",
+       "word": 526,
+       "tone": "green",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "لا تومّض النص",
+       "word": 528,
+       "size": "m"
+      }
+     ],
+     "gap": 50
+    }
+   ]
+  },
+  {
+   "from": 535,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "4",
+       "word": 535,
+       "tone": "green",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "المونتاج برّا إنستغرام: عادي",
+       "word": 535,
+       "size": "m"
+      }
+     ],
+     "gap": 50
+    }
+   ]
+  },
+  {
+   "from": 539,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "5",
+       "word": 539,
+       "tone": "green",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "Trial Reels مختلفة فعلاً",
+       "word": 542,
+       "size": "m"
+      }
+     ],
+     "gap": 50
+    }
+   ]
+  },
+  {
+   "from": 545,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "number",
+       "text": "6",
+       "word": 545,
+       "tone": "green",
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "الكاروسيل فرصتك",
+       "word": 545,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 50
+    }
+   ]
+  },
+  {
+   "from": 548,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:bullseye",
+     "word": 554,
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "كلها بترجع لشي واحد",
+     "word": 551,
+     "size": "m"
+    }
+   ]
+  },
+  {
+   "from": 555,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "شعاري.jpg",
+       "look": "circle",
+       "word": 556,
+       "size": "m"
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:spiral-calendar",
+       "word": 558,
+       "size": "s"
+      }
+     ],
+     "gap": 80
+    },
+    {
+     "type": "text",
+     "text": "محتوى بيشبهك… وبينزل باستمرار",
+     "word": 556,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 559,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:fishing-pole",
+         "word": 559,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "هوك قوي",
+         "word": 559,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:artist-palette",
+         "word": 563,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "كاروسيل بهويتك",
+         "word": 563,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:robot",
+         "word": 568,
+         "size": "s",
+         "tint": "gray",
+         "corner": "fluent-emoji-flat:cross-mark",
+         "cornerAt": 568
+        },
+        {
+         "type": "text",
+         "text": "بدون ريحة AI",
+         "word": 565,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 570,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "file": "غلاف-الدورة.png",
+     "word": 573,
+     "look": "card",
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "كلود وصناعة المحتوى",
+     "word": 574,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 578,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:brain",
+         "word": 581,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نسخة من عقلك",
+         "word": 581,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "visual",
+       "icon": "logos:claude-icon",
+       "word": 583,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:writing-hand",
+         "word": 585,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "بصوتك إنت",
+         "word": 585,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 24
+      }
+     ],
+     "gap": 60
+    },
+    {
+     "type": "text",
+     "text": "مو بصوت الكل",
+     "word": 586,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 590,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:artist-palette",
+         "word": 592,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نظام تصميم بهويتك",
+         "word": 592,
+         "size": "s"
+        }
+       ],
+       "gap": 24
+      },
+      {
+       "type": "carousel",
+       "word": 594,
+       "every": 10,
+       "slides": [
+        {
+         "icon": "fluent-emoji-flat:artist-palette",
+         "text": "هويتك"
+        },
+        {
+         "icon": "fluent-emoji-flat:sparkles",
+         "text": "جاهز"
+        },
+        {
+         "icon": "fluent-emoji-flat:stopwatch",
+         "text": "بدقايق"
+        }
+       ]
+      }
+     ],
+     "gap": 90
+    }
+   ]
+  },
+  {
+   "from": 598,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "file": "صفحة-الدورة.png",
+     "word": 600,
+     "look": "card",
+     "size": "l",
+     "highlights": [
+      {
+       "x": 59,
+       "y": 49,
+       "w": 16,
+       "h": 8,
+       "tone": "green",
+       "word": 605
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "الرابط بالوصف",
+     "word": 605,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 608,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:shield",
+       "word": 609,
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "ضمان 7 أيام",
+       "word": 608,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 612,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "subscribe",
+       "word": 616,
+       "clickAt": 617
+      },
+      {
+       "type": "host",
+       "word": 613,
+       "size": "s"
+      }
+     ],
+     "gap": 40
+    }
+   ]
+  }
+ ],
+ "music": {
+  "volume": 0.07
+ }
+}

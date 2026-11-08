@@ -1,0 +1,1923 @@
+{
+ "source": "IMG_11لل00.MOV@1791829086512",
+ "scenes": [
+  {
+   "from": 0,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "visual",
+     "file": "مصدر-ترايلر-1.mp4",
+     "word": 0,
+     "look": "card",
+     "size": "xl"
+    }
+   ]
+  },
+  {
+   "from": 2,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:clapper-board",
+       "word": 7,
+       "tint": "gray",
+       "corner": "fluent-emoji-flat:cross-mark",
+       "cornerAt": 8
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:movie-camera",
+       "word": 11,
+       "tint": "gray",
+       "corner": "fluent-emoji-flat:cross-mark",
+       "cornerAt": 11
+      }
+     ],
+     "gap": 140
+    },
+    {
+     "type": "text",
+     "text": "لا مونتاج… ولا تصوير",
+     "word": 8,
+     "size": "m"
+    }
+   ]
+  },
+  {
+   "from": 12,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "mc-code",
+       "word": 13,
+       "filename": "Trailer.tsx",
+       "end": 15,
+       "fontSize": 34,
+       "lines": [
+        "export const Trailer = () => {",
+        "  const glow = spring(frame);",
+        "  return <Title text=\"ONE BY ONE\"",
+        "    color=\"#39FF8B\" slam />;",
+        "};"
+       ]
+      },
+      {
+       "type": "text",
+       "text": "Claude كتبه\nكود",
+       "word": 13,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 16,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "mc-post",
+       "word": 18,
+       "text": "I made this with ONE prompt 🤯",
+       "file": "اطار-كسول-2.jpg",
+       "likes": 48200
+      },
+      {
+       "type": "text",
+       "text": "«عملته\nببرومبت واحد»",
+       "word": 20,
+       "size": "m"
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 23,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:clipboard",
+       "word": 23,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "بتنسخ البرومبت…",
+       "word": 23,
+       "size": "m"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 25,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-frames",
+     "word": 28,
+     "frames": [
+      "اطار-كسول-1.jpg",
+      "اطار-كسول-2.jpg",
+      "اطار-كسول-3.jpg",
+      "اطار-كسول-4.jpg",
+      "اطار-كسول-2.jpg",
+      "اطار-كسول-1.jpg"
+     ]
+    },
+    {
+     "type": "text",
+     "text": "بس شبه كل اللي شفته قبل",
+     "word": 30,
+     "size": "m",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 35,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 39,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": 4,
+     "at": [
+      38,
+      39,
+      41,
+      44
+     ],
+     "results": [
+      "بتشبه الكل",
+      "",
+      "",
+      "بتشبهك إنت"
+     ],
+     "resultsAt": [
+      42,
+      null,
+      null,
+      45
+     ]
+    }
+   ]
+  },
+  {
+   "from": 47,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:film-frames",
+         "word": 50,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "موشن",
+         "word": 50,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:memo",
+         "word": 52,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "كابشن",
+         "word": 52,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:framed-picture",
+         "word": 54,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "كاروسيل",
+         "word": 54,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:robot",
+         "word": 56,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "أي طلب من AI",
+         "word": 55,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 60
+    },
+    {
+     "type": "text",
+     "text": "القاعدة لكل شي",
+     "word": 52,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 58,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "logos:claude-icon",
+       "word": 62,
+       "size": "m"
+      },
+      {
+       "type": "card",
+       "text": "مو مولّد فيديو",
+       "word": 62
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 66,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:person",
+         "word": 68,
+         "size": "s",
+         "tint": "gray",
+         "corner": "fluent-emoji-flat:cross-mark",
+         "cornerAt": 69
+        },
+        {
+         "type": "text",
+         "text": "ناس حقيقيين",
+         "word": 68,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:video-camera",
+         "word": 71,
+         "size": "s",
+         "tint": "gray",
+         "corner": "fluent-emoji-flat:cross-mark",
+         "cornerAt": 71
+        },
+        {
+         "type": "text",
+         "text": "تصوير",
+         "word": 69,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 160
+    }
+   ]
+  },
+  {
+   "from": 72,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:large-orange-diamond",
+         "word": 73,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "أشكال",
+         "word": 73,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:input-latin-letters",
+         "word": 74,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نصوص",
+         "word": 74,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:star",
+         "word": 75,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "أيقونات",
+         "word": 75,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:desktop-computer",
+         "word": 76,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "واجهات",
+         "word": 76,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:light-bulb",
+         "word": 77,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "ضوء",
+         "word": 77,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:sparkles",
+         "word": 78,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "جزيئات",
+         "word": 77,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 36
+    }
+   ]
+  },
+  {
+   "from": 79,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:bar-chart",
+         "word": 81,
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "عرض تقديمي فخم",
+         "word": 82,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:film-projector",
+         "word": 85,
+         "size": "m",
+         "tint": "gray",
+         "tintAt": 86
+        },
+        {
+         "type": "text",
+         "text": "مو فيلم سينما",
+         "word": 83,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 200
+    }
+   ]
+  },
+  {
+   "from": 87,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:bullseye",
+       "word": 88,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "بتعرف شو تطلب منه",
+       "word": 90,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 94,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 94,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": 1,
+     "at": [
+      95,
+      95,
+      95,
+      95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "الطلب الكسول",
+     "word": 100,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 104,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-typing",
+     "word": 104,
+     "title": "Claude",
+     "text": "اعمل فيديو موشن جرافيكس 15 ثانية، بشكل احترافي جدا جدا",
+     "end": 113,
+     "w": 1250,
+     "h": 260
+    }
+   ]
+  },
+  {
+   "from": 114,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "file": "مصدر-برومبت-كسول.mp4",
+     "word": 114,
+     "look": "card",
+     "size": "xl"
+    }
+   ]
+  },
+  {
+   "from": 120,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "counter",
+       "to": 20,
+       "prefix": "×",
+       "word": 123,
+       "size": "l",
+       "tone": "red",
+       "frames": 14
+      },
+      {
+       "type": "text",
+       "text": "شفت هالشكل 20 مرة",
+       "word": 123,
+       "size": "m"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 127,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "file": "شعاري.jpg",
+       "look": "circle",
+       "word": 129,
+       "size": "m",
+       "tint": "gray",
+       "corner": "?",
+       "cornerAt": 129
+      },
+      {
+       "type": "text",
+       "text": "ما فيه هويتك",
+       "word": 129,
+       "size": "m",
+       "tone": "red"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 137,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-typing",
+     "word": 137,
+     "title": "Claude",
+     "text": "اعمل فيديو موشن جرافيكس 15 ثانية، بشكل احترافي جدا جدا",
+     "end": 142,
+     "cross": 139,
+     "w": 1250,
+     "h": 260
+    },
+    {
+     "type": "text",
+     "text": "مو هو السر",
+     "word": 142,
+     "size": "m",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 145,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:hourglass-not-done",
+       "word": 148,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "الشغل الحقيقي\nقبل ما تكبس إرسال",
+       "word": 146,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 152,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 152,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": 2,
+     "at": [
+      153,
+      153,
+      153,
+      153
+     ]
+    },
+    {
+     "type": "text",
+     "text": "بريف حقيقي",
+     "word": 156,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 159,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "steps",
+     "labels": [
+      "1",
+      "2",
+      "3"
+     ],
+     "style": "chips",
+     "word": 160
+    },
+    {
+     "type": "text",
+     "text": "3 أشياء",
+     "word": 159,
+     "size": "l"
+    }
+   ]
+  },
+  {
+   "from": 162,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "mc-doc",
+       "word": 162,
+       "title": "البريف",
+       "h": 330,
+       "w": 1000,
+       "sections": [
+        {
+         "head": "1. الدور",
+         "kind": "text",
+         "items": [
+          "إنت المخرج، والمحرّك، والملحّن، ومصمم الصوت"
+         ],
+         "word": 163
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "text": "1. الدور",
+       "word": 163,
+       "size": "l",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 168,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:clapper-board",
+         "word": 169,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "المخرج",
+         "word": 169,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:artist-palette",
+         "word": 170,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "المحرّك",
+         "word": 170,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:musical-keyboard",
+         "word": 171,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الملحّن",
+         "word": 171,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:headphone",
+         "word": 172,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "مصمم الصوت",
+         "word": 171,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 70
+    }
+   ]
+  },
+  {
+   "from": 174,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:gear",
+       "word": 177,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "جملة وحدة… بتغيّر كل قرار",
+       "word": 175,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 180,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "mc-doc",
+       "word": 180,
+       "title": "البريف",
+       "h": 520,
+       "w": 1000,
+       "sections": [
+        {
+         "head": "1. الدور",
+         "kind": "text",
+         "items": [
+          "إنت المخرج، والمحرّك، والملحّن، ومصمم الصوت"
+         ],
+         "word": 163
+        },
+        {
+         "head": "2. الممنوع",
+         "kind": "ban",
+         "items": [
+          "نص بنص الشاشة",
+          "تدرّجات جاهزة",
+          "حركات عامة"
+         ],
+         "word": 186
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "text": "2. دليل\nالستايل",
+       "word": 181,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 197,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "mc-doc",
+     "word": 197,
+     "title": "البريف",
+     "h": 660,
+     "w": 1150,
+     "sections": [
+      {
+       "head": "1. الدور",
+       "kind": "text",
+       "items": [
+        "إنت المخرج، والمحرّك، والملحّن، ومصمم الصوت"
+       ],
+       "word": 163
+      },
+      {
+       "head": "2. الممنوع",
+       "kind": "ban",
+       "items": [
+        "نص بنص الشاشة",
+        "تدرّجات جاهزة",
+        "حركات عامة"
+       ],
+       "word": 186
+      },
+      {
+       "head": "المطلوب",
+       "kind": "swatches",
+       "items": [
+        "ألوانك وخطوطك ومسافاتك"
+       ],
+       "word": 201
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 204,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "mc-doc",
+       "word": 204,
+       "title": "البريف",
+       "h": 820,
+       "w": 1000,
+       "sections": [
+        {
+         "head": "1. الدور",
+         "kind": "text",
+         "items": [
+          "إنت المخرج، والمحرّك، والملحّن، ومصمم الصوت"
+         ],
+         "word": 163
+        },
+        {
+         "head": "2. الممنوع",
+         "kind": "ban",
+         "items": [
+          "نص بنص الشاشة",
+          "تدرّجات جاهزة",
+          "حركات عامة"
+         ],
+         "word": 186
+        },
+        {
+         "head": "المطلوب",
+         "kind": "swatches",
+         "items": [
+          "ألوانك وخطوطك ومسافاتك"
+         ],
+         "word": 201
+        },
+        {
+         "head": "3. اعرض الخطة أول",
+         "kind": "board",
+         "word": 205,
+         "approveAt": 222
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "text": "3. اعرض\nالخطة أول",
+       "word": 205,
+       "size": "m",
+       "tone": "green"
+      }
+     ],
+     "gap": 50
+    }
+   ]
+  },
+  {
+   "from": 217,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:wrench",
+       "word": 222,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "بتصلّحه هون… قبل ما يتعب ويتعبك",
+       "word": 222,
+       "size": "m"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 228,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "file": "مصدر-برومبت-كسول.mp4",
+         "word": 228,
+         "look": "card",
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "سطر واحد",
+         "word": 228,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "file": "مصدر-بريف-تطبيق-الشروق.mp4",
+         "word": 234,
+         "look": "card",
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "بريف",
+         "word": 234,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 60
+    },
+    {
+     "type": "text",
+     "text": "شوف الفرق",
+     "word": 235,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 237,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 237,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": 3,
+     "at": [
+      238,
+      238,
+      238,
+      238
+     ]
+    },
+    {
+     "type": "text",
+     "text": "مرجع",
+     "word": 238,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 241,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:clapper-board",
+       "word": 242,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "إعلان فيلم عاجبك",
+       "word": 242,
+       "size": "m"
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 245,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "card",
+       "text": "ينسخ المحتوى",
+       "word": 250
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:cross-mark",
+       "word": 251,
+       "size": "s"
+      }
+     ],
+     "gap": 40
+    },
+    {
+     "type": "text",
+     "text": "ياخد الإيقاع ✓",
+     "word": 254,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 257,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-rhythm",
+     "word": 257,
+     "title": "الإيقاع",
+     "titles": [
+      {
+       "at": 4,
+       "text": "ONE BY ONE"
+      },
+      {
+       "at": 8,
+       "text": "SIGNAL LOST"
+      }
+     ],
+     "legend": [
+      "سرعة القطعات",
+      "إيمتى بتنزل العناوين",
+      "الستايل الأساسي"
+     ],
+     "sweep": 110
+    }
+   ]
+  },
+  {
+   "from": 265,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "visual",
+     "icon": "fluent-emoji-flat:eyes",
+     "word": 267,
+     "size": "m",
+     "tint": "gray",
+     "corner": "fluent-emoji-flat:cross-mark",
+     "cornerAt": 269
+    },
+    {
+     "type": "text",
+     "text": "ما بيشوف الفيديو مثلك",
+     "word": 266,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 270,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-frames",
+     "word": 270,
+     "frames": [
+      "اطار-ترايلر-1.jpg",
+      "اطار-ترايلر-2.jpg",
+      "اطار-ترايلر-3.jpg",
+      "اطار-ترايلر-4.jpg",
+      "اطار-ترايلر-5.jpg",
+      "اطار-ترايلر-6.jpg"
+     ]
+    },
+    {
+     "type": "text",
+     "text": "بيقطّعه لصور… ويدرس توقيته",
+     "word": 271,
+     "size": "m"
+    }
+   ]
+  },
+  {
+   "from": 274,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "file": "مصدر-ترايلر-2.mp4",
+     "word": 275,
+     "look": "card",
+     "size": "xl"
+    }
+   ]
+  },
+  {
+   "from": 280,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "visual",
+     "file": "مصدر-ترايلر-3.mp4",
+     "word": 281,
+     "look": "card",
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "ستايل مو عند حدا",
+     "word": 281,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 286,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 286,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": 4,
+     "at": [
+      287,
+      287,
+      287,
+      287
+     ]
+    },
+    {
+     "type": "text",
+     "text": "بيحرّك الشي على الصوت",
+     "word": 289,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 293,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:musical-notes",
+         "word": 294,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "موسيقى بالكود",
+         "word": 294,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:left-arrow",
+       "word": 296,
+       "size": "s"
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:high-voltage",
+         "word": 298,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "نبضة مع الإيقاع",
+         "word": 298,
+         "size": "s",
+         "tone": "green"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 60
+    }
+   ]
+  },
+  {
+   "from": 303,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "file": "مصدر-موسيقى-نابضة.mp4",
+     "word": 303,
+     "look": "card",
+     "size": "xl"
+    },
+    {
+     "type": "text",
+     "text": "صار عندك شي حي",
+     "word": 310,
+     "size": "m",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 314,
+   "transition": "flash",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:handshake",
+       "word": 317,
+       "size": "m"
+      },
+      {
+       "type": "text",
+       "text": "خليني أكون صريح",
+       "word": 314,
+       "size": "m"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 319,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "meter",
+     "label": "قوة النتيجة = قوة اتجاهك",
+     "value": 92,
+     "word": 321,
+     "tone": "green",
+     "steps": [
+      {
+       "word": 321,
+       "value": 92
+      },
+      {
+       "word": 335,
+       "value": 45
+      }
+     ],
+     "marks": [
+      {
+       "at": 45,
+       "text": "متوسط… مثل الكل",
+       "tone": "red",
+       "word": 335
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 339,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:counterclockwise-arrows-button",
+         "word": 350,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "كم جولة تعديل",
+         "word": 348,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:check-mark-button",
+       "word": 351,
+       "size": "s",
+       "tint": "green"
+      }
+     ],
+     "gap": 80
+    },
+    {
+     "type": "text",
+     "text": "مو كل مرة من أول محاولة",
+     "word": 346,
+     "size": "s"
+    }
+   ]
+  },
+  {
+   "from": 352,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:robot",
+         "word": 353,
+         "size": "m"
+        },
+        {
+         "type": "text",
+         "text": "الأداة: المونتاج",
+         "word": 354,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "file": "شعاري.jpg",
+         "look": "circle",
+         "word": 358,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الذوق: إلك",
+         "word": 356,
+         "size": "m",
+         "tone": "green"
+        }
+       ],
+       "gap": 90
+      }
+     ],
+     "gap": 200
+    }
+   ]
+  },
+  {
+   "from": 359,
+   "transition": "zoom",
+   "bg": "rays",
+   "items": [
+    {
+     "type": "mc-levels",
+     "word": 360,
+     "labels": [
+      "سطر",
+      "بريف",
+      "مرجع",
+      "صوت"
+     ],
+     "active": null,
+     "at": [
+      361,
+      365,
+      368,
+      374
+     ],
+     "results": [
+      "ترند",
+      "هوية",
+      "ستايل ما عند حدا",
+      "حركة حيّة"
+     ],
+     "resultsAt": [
+      364,
+      367,
+      370,
+      377
+     ]
+    }
+   ]
+  },
+  {
+   "from": 378,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:memo",
+         "word": 382,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الكابشن",
+         "word": 382,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:framed-picture",
+         "word": 383,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الكاروسيل",
+         "word": 383,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      },
+      {
+       "type": "group",
+       "dir": "stack",
+       "items": [
+        {
+         "type": "visual",
+         "icon": "fluent-emoji-flat:film-frames",
+         "word": 384,
+         "size": "s"
+        },
+        {
+         "type": "text",
+         "text": "الريلز",
+         "word": 383,
+         "size": "s"
+        }
+       ],
+       "gap": 20
+      }
+     ],
+     "gap": 90
+    },
+    {
+     "type": "text",
+     "text": "نفس القاعدة",
+     "word": 379,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 385,
+   "transition": "glitch",
+   "items": [
+    {
+     "type": "group",
+     "dir": "row",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:robot",
+       "word": 388,
+       "size": "m",
+       "corner": "?",
+       "cornerAt": 388
+      },
+      {
+       "type": "text",
+       "text": "ما بيعرفك…\nإذا ما عطيته بريف عنك",
+       "word": 388,
+       "size": "m"
+      }
+     ],
+     "gap": 60
+    },
+    {
+     "type": "text",
+     "text": "رح يكتب ويصمم مثل الكل",
+     "word": 395,
+     "size": "s",
+     "tone": "red"
+    }
+   ]
+  },
+  {
+   "from": 399,
+   "transition": "zoom",
+   "items": [
+    {
+     "type": "visual",
+     "file": "غلاف-الدورة.png",
+     "word": 402,
+     "look": "card",
+     "size": "l"
+    },
+    {
+     "type": "text",
+     "text": "كلود وصناعة المحتوى",
+     "word": 403,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 407,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "mc-doc",
+     "word": 408,
+     "title": "بريف دائم عنك",
+     "h": 660,
+     "sections": [
+      {
+       "head": "نسخة من عقلك وأسلوبك",
+       "kind": "text",
+       "items": [
+        "Claude بيكتب بصوتك إنت"
+       ],
+       "word": 412
+      },
+      {
+       "head": "نظام تصميم بهويتك",
+       "kind": "swatches",
+       "items": [
+        "ألوانك وخطوطك"
+       ],
+       "word": 415
+      },
+      {
+       "head": "نظام مونتاج كامل",
+       "kind": "board",
+       "word": 418,
+       "approveAt": 427
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 428,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "visual",
+     "file": "صفحة-الدورة.png",
+     "word": 430,
+     "look": "card",
+     "size": "l",
+     "highlights": [
+      {
+       "x": 59,
+       "y": 49,
+       "w": 16,
+       "h": 8,
+       "tone": "green",
+       "word": 435
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "text": "الرابط بالوصف",
+     "word": 435,
+     "size": "s",
+     "tone": "green"
+    }
+   ]
+  },
+  {
+   "from": 438,
+   "transition": "cut",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "visual",
+       "icon": "fluent-emoji-flat:shield",
+       "word": 439,
+       "size": "l"
+      },
+      {
+       "type": "text",
+       "text": "ضمان 7 أيام",
+       "word": 438,
+       "size": "m",
+       "tone": "green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "from": 442,
+   "transition": "whip",
+   "items": [
+    {
+     "type": "group",
+     "dir": "stack",
+     "items": [
+      {
+       "type": "subscribe",
+       "word": 446,
+       "clickAt": 447
+      },
+      {
+       "type": "host",
+       "word": 443,
+       "size": "s"
+      }
+     ],
+     "gap": 40
+    }
+   ]
+  }
+ ],
+ "music": {
+  "volume": 0.07
+ }
+}
