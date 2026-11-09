@@ -8,6 +8,8 @@ on:
       job: {description: "release tag holding job.tar", required: true}
       frames: {description: "total frames", required: true}
       chunks: {description: "parallel machines", required: true, default: "12"}
+      comp: {description: "composition id", required: false, default: "Explainer"}
+      props: {description: "input props JSON", required: false, default: "{}"}
 permissions:
   contents: write
 concurrency: {group: "${{ inputs.job }}"}
@@ -36,11 +38,13 @@ jobs:
       - run: gh release download "${{ inputs.job }}" -p job.tar -R "$GITHUB_REPOSITORY" && tar -xf job.tar && rm job.tar
       - run: npx remotion browser ensure
       - name: render chunk
+        env: {PROPS: "${{ inputs.props }}"}
         run: |
           N=${{ inputs.chunks }}; F=${{ inputs.frames }}; i=${{ matrix.chunk }}
           a=$(( i * F / N )); b=$(( (i + 1) * F / N - 1 ))
           # each chunk carries its own lossless audio (pcm), so no separate audio render is needed
-          npx remotion render Explainer "out/part-$(printf %03d $i).mkv" --frames=$a-$b --codec=h264-mkv --audio-codec=pcm-16 --enforce-audio-track --crf=18 --concurrency=100% --log=error
+          printf '%s' "$PROPS" > props.json
+          npx remotion render "${{ inputs.comp }}" "out/part-$(printf %03d $i).mkv" --props=props.json --frames=$a-$b --codec=h264-mkv --audio-codec=pcm-16 --enforce-audio-track --crf=18 --concurrency=100% --log=error
       - uses: actions/upload-artifact@v4
         with: {name: "part-${{ matrix.chunk }}", path: out/, retention-days: 1}
 

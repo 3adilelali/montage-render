@@ -10,6 +10,7 @@ import {
   contactSheetDefaults,
 } from "./study/ContactSheet";
 import { Thumbnail, thumbnailDefaults } from "./thumbnail/Thumbnail";
+import { CourseLesson, calculateCourseMetadata } from "./scenes/CourseLesson/CourseLesson";
 
 const explainerDefaults: ExplainerProps = {
   timeline: null,
@@ -43,6 +44,17 @@ export const RemotionRoot: React.FC = () => {
         height={1000}
         defaultProps={contactSheetDefaults}
         calculateMetadata={calculateContactSheetMetadata}
+      />
+      {/* كورس كلود بالعربي: one lesson (scripts/course-cut.mjs → lesson.json) */}
+      <Composition
+        id="CourseLesson"
+        component={CourseLesson}
+        durationInFrames={90}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ lessonId: "l1", lesson: null }}
+        calculateMetadata={calculateCourseMetadata}
       />
       {/* YouTube thumbnail still, 1280×720 (scripts/thumbnail.mjs) */}
       <Composition
