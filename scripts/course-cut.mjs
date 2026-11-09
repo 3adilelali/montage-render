@@ -103,13 +103,28 @@ edl.segments.forEach((seg, si) => {
 	}
 	flush();
 });
+// cropRanges (lesson 4): a window switch mid-sentence (Pro window with a side panel) → crop by seconds.
+// Clips are split on the range edges with no fade at the joint, so the voice stays seamless.
+const cropOf = (c) => {
+	const mid = c.start + c.frames / FPS / 2;
+	const r = (edl.cropRanges ?? []).find((r) => r.src === c.src && mid >= r.from && mid < r.to);
+	return r?.crop ?? edl.segments[c.seg].crop ?? edl.crop[c.src];
+};
+for (const r of edl.cropRanges ?? []) for (const t of [r.from, r.to]) {
+	const k = clips.findIndex((c) => c.src === r.src && t > c.start + 1 / FPS && t < c.start + (c.frames - 1) / FPS);
+	if (k < 0) continue;
+	const c = clips[k];
+	const n = Math.round((t - c.start) * FPS);
+	clips.splice(k, 1, {...c, frames: n, noFadeOut: true}, {...c, start: c.start + n / FPS, frames: c.frames - n, noFadeIn: true, noFadeOut: c.noFadeOut});
+	clips[k].noFadeIn = c.noFadeIn;
+}
 const words = srcData.map((d) => d.words);
 
 let out = 0;
 for (const [k, c] of clips.entries()) {
 	c.out = out;
 	out += c.frames;
-	const cr = edl.segments[c.seg].crop ?? edl.crop[c.src];
+	const cr = cropOf(c);
 	const dur = c.frames / FPS;
 	let vf = `crop=${cr.w}:${cr.h}:${cr.x}:${cr.y}`;
 	for (const b of edl.blurs.filter((b) => b.src === c.src && b.to > c.start && b.from < c.start + dur)) {
@@ -147,7 +162,7 @@ for (const c of clips) {
 	const len = c.frames * per;
 	const srcPcm = pcms[c.src];
 	for (let n = 0; n < len; n++) {
-		const g = Math.min(1, n / fadeN, (len - 1 - n) / fadeN);
+		const g = Math.min(1, c.noFadeIn ? 1 : n / fadeN, c.noFadeOut ? 1 : (len - 1 - n) / fadeN);
 		dst[c.out * per + n] = Math.round((srcPcm[a0 + n] ?? 0) * g);
 	}
 }
@@ -178,9 +193,14 @@ const frameOf = (src, i, at) => {
 	if (!c) throw new Error(`word ${src}:${i} is cut out`);
 	return c.out + Math.max(0, Math.round((t - c.start) * FPS));
 };
-const segments = edl.segments.map((seg, si) => {
-	const cs = clips.filter((c) => c.seg === si);
-	return {src: seg.src, mode: seg.mode, from: cs[0].out, to: cs.at(-1).out + cs.at(-1).frames, cropW: (seg.crop ?? edl.crop[seg.src]).w};
+const segments = edl.segments.flatMap((seg, si) => {
+	const runs = [];
+	for (const c of clips.filter((c) => c.seg === si)) {
+		const w = cropOf(c).w;
+		if (runs.at(-1)?.cropW === w) runs.at(-1).to = c.out + c.frames;
+		else runs.push({src: seg.src, mode: seg.mode, from: c.out, to: c.out + c.frames, cropW: w});
+	}
+	return runs;
 });
 const segEnd = (f) => segments.find((s) => f >= s.from && f < s.to).to;
 const cards = edl.cards.map((c) => ({...c, frame: frameOf(c.src, c.word, c.t)}));
