@@ -12,42 +12,98 @@ import {ffmpeg as ffBundled, systemFfmpeg, polishVoice} from './audio.mjs';
 const ffmpeg = systemFfmpeg ?? ffBundled;
 
 const FPS = 30;
-const GAP = 1.0; // a silence longer than this inside a segment gets squeezed
-const KEEP_AFTER = 0.3;
-const KEEP_BEFORE = 0.25;
-const PAD_IN = 0.12;
-const PAD_OUT = 0.18;
+// Same logic as the channel cutter (eleven-cut.mjs): edges follow the REAL sound, not Scribe's word times
+// (Scribe often stretches a word over the silence after it). Every pause longer than MAX_PAUSE is cut out,
+// coughs/breaths between words are dropped (they sit in the gaps), 10 ms fades.
+const MAX_PAUSE = 0.25;
+const PAD_BEFORE = 0.05;
+const PAD_AFTER = 0.08;
+const TAIL = 0.25; // a word's sound may run this far past its Scribe end, never further (stops at coughs)
+const HOP = 0.01;
 const W = 1280;
 const H = 688;
 
 const id = process.argv[2];
 const DIR = path.join(PUBLIC_DIR, 'course', id);
 const edl = JSON.parse(fs.readFileSync(path.join(DIR, 'edl.json'), 'utf8'));
-const words = edl.sources.map((_, n) => JSON.parse(fs.readFileSync(path.join(DIR, `src${n}.words.json`), 'utf8')).words.map((x) => ({...x, end: Math.min(x.end, x.start + 1.2)})));
 const srcPath = (n) => path.resolve(ENGINE, edl.sources[n]);
 const TMP = path.join(DIR, 'clips');
 fs.rmSync(TMP, {recursive: true, force: true});
 fs.mkdirSync(TMP, {recursive: true});
 
-const snap = (t) => Math.round(t * FPS) / FPS;
+const energyOf = (file) => {
+	const buf = execFileSync(ffmpeg, ['-v', 'error', '-i', file, '-vn', '-ac', '1', '-ar', '16000', '-c:a', 'pcm_s16le', '-f', 'wav', '-'], {maxBuffer: 1 << 30});
+	const at = buf.indexOf('data') + 8;
+	const pcm = new Int16Array(buf.buffer.slice(buf.byteOffset + at, buf.byteOffset + buf.length - ((buf.length - at) % 2)));
+	const out = new Float32Array(Math.ceil(pcm.length / 160));
+	for (let f = 0; f < out.length; f++) {
+		let q = 0;
+		for (let i = f * 160; i < Math.min(pcm.length, (f + 1) * 160); i++) q += (pcm[i] / 32768) ** 2;
+		out[f] = Math.sqrt(q / 160);
+	}
+	return out;
+};
+const srcData = edl.sources.map((_, n) => {
+	const raw = JSON.parse(fs.readFileSync(path.join(DIR, `src${n}.words.json`), 'utf8')).words;
+	const E = energyOf(srcPath(n));
+	const fr = (t) => Math.max(0, Math.min(E.length - 1, Math.round(t / HOP)));
+	const inW = [];
+	for (const w of raw) for (let f = fr(w.start); f <= fr(Math.min(w.end, w.start + 1)); f++) inW.push(E[f]);
+	inW.sort((x, y) => x - y);
+	const QUIET = (inW[Math.floor(inW.length * 0.7)] || 0.05) * 0.12;
+	// real sound span of every word
+	const words = raw.map((w, i) => {
+		const next = raw[i + 1];
+		let a = fr(w.start);
+		const aLim = fr(i ? raw[i - 1].start + 0.05 : 0);
+		while (a > aLim && E[a - 1] > QUIET && w.start - a * HOP < 0.15) a--;
+		let e = fr(Math.min(w.end, w.start + 1.5));
+		while (e > fr(w.start) + 3 && E[e] <= QUIET) e--; // stretched end → back to the last sound
+		const lim = fr(Math.min(w.end + TAIL, next ? next.start : Infinity));
+		while (e < lim && E[e + 1] > QUIET) e++;
+		return {...w, a: a * HOP, b: (e + 1) * HOP};
+	});
+	return {words, total: E.length * HOP};
+});
+
 const clips = []; // {src, start, frames, seg}
 edl.segments.forEach((seg, si) => {
-	const w = words[seg.src];
-	const prevEnd = seg.from > 0 ? w[seg.from - 1].end + 0.02 : 0;
-	const nextStart = seg.to + 1 < w.length ? w[seg.to + 1].start - 0.02 : Infinity;
-	let start = Math.max(w[seg.from].start - PAD_IN, prevEnd, 0);
+	const {words: w, total} = srcData[seg.src];
+	if (seg.t0 != null) {
+		// a take Scribe mis-timed: kept by seconds instead of word numbers
+		const st = Math.floor(seg.t0 * FPS) / FPS;
+		clips.push({src: seg.src, start: st, frames: Math.ceil((seg.t1 - st) * FPS), seg: si});
+		return;
+	}
+	const drop = new Set((seg.drop ?? []).flatMap(([x, y]) => Array.from({length: y - x + 1}, (_, k) => x + k)));
+	let cur = null;
+	const flush = () => {
+		if (!cur) return;
+		const lo = Math.max(0, cur.a - PAD_BEFORE, cur.first > 0 ? w[cur.first - 1].b + 0.01 : 0);
+		const hi = Math.min(total, cur.b + PAD_AFTER, cur.last + 1 < w.length ? w[cur.last + 1].a - 0.01 : Infinity);
+		const s = Math.floor(lo * FPS) / FPS;
+		const frames = Math.max(1, Math.ceil((hi - s) * FPS));
+		const prev = clips.at(-1);
+		if (prev && prev.src === seg.src && prev.seg === si && s <= prev.start + prev.frames / FPS) prev.frames = Math.ceil((s - prev.start) * FPS) + frames;
+		else clips.push({src: seg.src, start: s, frames, seg: si});
+		cur = null;
+	};
 	for (let i = seg.from; i <= seg.to; i++) {
-		const last = i === seg.to;
-		const gap = last ? 0 : w[i + 1].start - w[i].end;
-		if (last || gap > GAP) {
-			const end = last ? Math.min(w[i].end + PAD_OUT, nextStart) : w[i].end + KEEP_AFTER;
-			const s = snap(start);
-			const frames = Math.max(1, Math.round((end - s) * FPS));
-			clips.push({src: seg.src, start: s, frames, seg: si});
-			if (!last) start = w[i + 1].start - KEEP_BEFORE;
+		if (drop.has(i)) {
+			flush();
+			continue;
+		}
+		if (cur && w[i].a - cur.b <= MAX_PAUSE) {
+			cur.b = w[i].b;
+			cur.last = i;
+		} else {
+			flush();
+			cur = {a: w[i].a, b: w[i].b, first: i, last: i};
 		}
 	}
+	flush();
 });
+const words = srcData.map((d) => d.words);
 
 let out = 0;
 for (const [k, c] of clips.entries()) {
@@ -63,7 +119,7 @@ for (const [k, c] of clips.entries()) {
 	}
 	if (cr.w < W || cr.h < H) vf += `,pad=${W}:${H}:0:0:black`;
 	vf += `,fps=${FPS},format=yuv420p`;
-	const af = `afade=t=in:d=0.012,apad,atrim=0:${dur.toFixed(4)},afade=t=out:st=${(dur - 0.015).toFixed(4)}:d=0.015`;
+	const af = `afade=t=in:d=0.01,apad,atrim=0:${dur.toFixed(4)},afade=t=out:st=${(dur - 0.012).toFixed(4)}:d=0.012`;
 	execFileSync(ffmpeg, ['-v', 'error', '-y', '-ss', c.start.toFixed(3), '-i', srcPath(c.src), '-t', (dur + 0.2).toFixed(3),
 		'-filter_complex', `[0:v]${vf}[v];[0:a]${af}[a]`, '-map', '[v]', '-map', '[a]', '-frames:v', String(c.frames),
 		'-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', '-c:a', 'pcm_s16le', '-ar', '48000', '-ac', '1', path.join(TMP, `c${String(k).padStart(4, '0')}.mkv`)]);
@@ -82,8 +138,8 @@ const full = polishVoice(raw, polished);
 execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', polished, '-ac', '1', '-c:a', 'flac', path.join(DIR, 'voice.flac')]);
 
 // word (src, index) → output frame
-const frameOf = (src, i) => {
-	const t = words[src][i].start;
+const frameOf = (src, i, at) => {
+	const t = at ?? words[src][i].start;
 	const c = clips.find((c) => c.src === src && t >= c.start - 0.15 && t < c.start + c.frames / FPS);
 	if (!c) throw new Error(`word ${src}:${i} is cut out`);
 	return c.out + Math.max(0, Math.round((t - c.start) * FPS));
@@ -93,10 +149,10 @@ const segments = edl.segments.map((seg, si) => {
 	return {src: seg.src, mode: seg.mode, from: cs[0].out, to: cs.at(-1).out + cs.at(-1).frames, cropW: edl.crop[seg.src].w};
 });
 const segEnd = (f) => segments.find((s) => f >= s.from && f < s.to).to;
-const cards = edl.cards.map((c) => ({...c, frame: frameOf(c.src, c.word)}));
+const cards = edl.cards.map((c) => ({...c, frame: frameOf(c.src, c.word, c.t)}));
 const groupEnd = {};
 for (const c of cards) groupEnd[c.group] = segEnd(c.frame);
-const headers = edl.headers.map((h) => ({text: h.text, frame: frameOf(h.src, h.word)}));
+const headers = edl.headers.map((h) => ({text: h.text, frame: frameOf(h.src, h.word, h.t)}));
 const lesson = {
 	title: edl.title, lesson: edl.lesson, lessonTitle: edl.lessonTitle, durationInFrames: out, width: W, height: H,
 	segments, cards: cards.map((c) => ({group: c.group, n: c.n, text: c.text, frame: c.frame, until: groupEnd[c.group]})), headers,
