@@ -1,6 +1,6 @@
-# Cloud render on GitHub Actions (free for public repos): the video is split into chunks rendered in parallel,
-# audio is rendered once, then everything is joined and attached to the job's release. scripts/cloud-render.mjs
-# uploads the job (public/ as job.tar), starts this, downloads final.mp4 and deletes the release.
+# Cloud render on GitHub Actions (free for public repos): the video is split into chunks rendered in parallel, each
+# chunk carrying its own lossless audio (pcm); the join encodes audio once and attaches final.mp4 to the job release.
+# scripts/cloud-render.mjs uploads the job (public/ as job.tar), starts this, downloads final.mp4, deletes the release.
 name: render
 on:
   workflow_dispatch:
@@ -39,31 +39,19 @@ jobs:
         run: |
           N=${{ inputs.chunks }}; F=${{ inputs.frames }}; i=${{ matrix.chunk }}
           a=$(( i * F / N )); b=$(( (i + 1) * F / N - 1 ))
-          npx remotion render Explainer "out/part-$(printf %03d $i).mp4" --frames=$a-$b --muted --crf=18 --concurrency=100% --log=error
+          # each chunk carries its own lossless audio (pcm), so no separate audio render is needed
+          npx remotion render Explainer "out/part-$(printf %03d $i).mkv" --frames=$a-$b --codec=h264-mkv --audio-codec=pcm-16 --enforce-audio-track --crf=18 --concurrency=100% --log=error
       - uses: actions/upload-artifact@v4
         with: {name: "part-${{ matrix.chunk }}", path: out/, retention-days: 1}
 
-  audio:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: 22, cache: npm}
-      - run: npm ci --ignore-scripts
-      - run: gh release download "${{ inputs.job }}" -p job.tar -R "$GITHUB_REPOSITORY" && tar -xf job.tar && rm job.tar
-      - run: npx remotion browser ensure
-      - run: npx remotion render Explainer out/audio.aac --codec=aac --log=error
-      - uses: actions/upload-artifact@v4
-        with: {name: audio, path: out/audio.aac, retention-days: 1}
-
   merge:
-    needs: [video, audio]
+    needs: video
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with: {path: parts, merge-multiple: true}
       - run: |
           which ffmpeg || (sudo apt-get update -q && sudo apt-get install -yq ffmpeg)
-          for f in $(ls parts/part-*.mp4 | sort); do echo "file '$PWD/$f'"; done > list.txt
-          ffmpeg -v error -f concat -safe 0 -i list.txt -i parts/audio.aac -map 0:v -map 1:a -c copy -movflags +faststart -shortest final.mp4
+          for f in $(ls parts/part-*.mkv | sort); do echo "file '$PWD/$f'"; done > list.txt
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c:v copy -c:a aac -b:a 320k -movflags +faststart final.mp4
           gh release upload "${{ inputs.job }}" final.mp4 -R "$GITHUB_REPOSITORY" --clobber

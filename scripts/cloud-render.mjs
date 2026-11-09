@@ -24,7 +24,7 @@ const comps = spawnSync('npx', ['remotion', 'compositions'], {cwd: ENGINE, encod
 const frames = Number(comps.match(/Explainer\s+\d+\s+\d+x\d+\s+(\d+)/)?.[1]);
 if (!frames) throw new Error('could not read the frame count');
 const ci = process.argv.indexOf('--chunks');
-const chunks = ci > -1 ? Number(process.argv[ci + 1]) : Math.min(20, Math.max(4, Math.ceil(frames / 700)));
+const chunks = ci > -1 ? Number(process.argv[ci + 1]) : Math.min(20, Math.max(5, Math.ceil(frames / 2000)))  // ~5 jobs run at once on this account;
 console.log(`frames ${frames} → ${chunks} machines`);
 
 // 1) engine code → repo (public/, node_modules and the keys are in .gitignore)
