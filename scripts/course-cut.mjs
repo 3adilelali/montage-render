@@ -109,7 +109,7 @@ let out = 0;
 for (const [k, c] of clips.entries()) {
 	c.out = out;
 	out += c.frames;
-	const cr = edl.crop[c.src];
+	const cr = edl.segments[c.seg].crop ?? edl.crop[c.src];
 	const dur = c.frames / FPS;
 	let vf = `crop=${cr.w}:${cr.h}:${cr.x}:${cr.y}`;
 	for (const b of edl.blurs.filter((b) => b.src === c.src && b.to > c.start && b.from < c.start + dur)) {
@@ -119,23 +119,57 @@ for (const [k, c] of clips.entries()) {
 	}
 	if (cr.w < W || cr.h < H) vf += `,pad=${W}:${H}:0:0:black`;
 	vf += `,fps=${FPS},format=yuv420p`;
-	const af = `afade=t=in:d=0.01,apad,atrim=0:${dur.toFixed(4)},afade=t=out:st=${(dur - 0.012).toFixed(4)}:d=0.012`;
 	execFileSync(ffmpeg, ['-v', 'error', '-y', '-ss', c.start.toFixed(3), '-i', srcPath(c.src), '-t', (dur + 0.2).toFixed(3),
-		'-filter_complex', `[0:v]${vf}[v];[0:a]${af}[a]`, '-map', '[v]', '-map', '[a]', '-frames:v', String(c.frames),
-		'-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', '-c:a', 'pcm_s16le', '-ar', '48000', '-ac', '1', path.join(TMP, `c${String(k).padStart(4, '0')}.mkv`)]);
+		'-filter_complex', `[0:v]${vf}[v]`, '-map', '[v]', '-an', '-frames:v', String(c.frames),
+		'-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', path.join(TMP, `c${String(k).padStart(4, '0')}.mkv`)]);
 	process.stdout.write(`\r${k + 1}/${clips.length}`);
 }
 console.log();
 const list = clips.map((_, k) => `file 'c${String(k).padStart(4, '0')}.mkv'`).join('\n');
 fs.writeFileSync(path.join(TMP, 'list.txt'), list);
-const joined = path.join(TMP, 'joined.mkv');
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', path.join(TMP, 'list.txt'), '-c', 'copy', joined]);
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', joined, '-an', '-c:v', 'copy', '-movflags', '+faststart', path.join(DIR, 'cut.mp4')]);
+// Sync (Adil 2026-11-09: the voice must match the picture 100%; a stream-copy concat drifted ~2 s over 9 min):
+// the picture is re-timed by frame number (frame n = n/30 s), and the voice is sliced sample-exact from the
+// source with the SAME frame-snapped edges.
+execFileSync(ffmpeg, ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', path.join(TMP, 'list.txt'),
+	'-vf', `setpts=N/${FPS}/TB`, '-r', String(FPS), '-fps_mode', 'cfr', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', '-movflags', '+faststart', path.join(DIR, 'cut.mp4')]);
+const SR = 48000;
+const pcmOf = (file) => {
+	const buf = execFileSync(ffmpeg, ['-v', 'error', '-i', file, '-vn', '-ac', '1', '-ar', String(SR), '-c:a', 'pcm_s16le', '-f', 'wav', '-'], {maxBuffer: 2 ** 31 - 1});
+	const at = buf.indexOf('data') + 8;
+	return new Int16Array(buf.buffer.slice(buf.byteOffset + at, buf.byteOffset + buf.length - ((buf.length - at) % 2)));
+};
+const pcms = edl.sources.map((_, n) => (clips.some((c) => c.src === n) ? pcmOf(srcPath(n)) : null));
+const per = SR / FPS;
+const dst = new Int16Array(out * per);
+const fadeN = Math.round(0.01 * SR);
+for (const c of clips) {
+	const a0 = Math.round(c.start * FPS) * per; // start sits on the frame grid
+	const len = c.frames * per;
+	const srcPcm = pcms[c.src];
+	for (let n = 0; n < len; n++) {
+		const g = Math.min(1, n / fadeN, (len - 1 - n) / fadeN);
+		dst[c.out * per + n] = Math.round((srcPcm[a0 + n] ?? 0) * g);
+	}
+}
 const raw = path.join(TMP, 'raw.wav');
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', joined, '-vn', '-c:a', 'pcm_s16le', raw]);
+const hdr = Buffer.alloc(44);
+hdr.write('RIFF', 0);
+hdr.writeUInt32LE(36 + dst.length * 2, 4);
+hdr.write('WAVE', 8);
+hdr.write('fmt ', 12);
+hdr.writeUInt32LE(16, 16);
+hdr.writeUInt16LE(1, 20);
+hdr.writeUInt16LE(1, 22);
+hdr.writeUInt32LE(SR, 24);
+hdr.writeUInt32LE(SR * 2, 28);
+hdr.writeUInt16LE(2, 32);
+hdr.writeUInt16LE(16, 34);
+hdr.write('data', 36);
+hdr.writeUInt32LE(dst.length * 2, 40);
+fs.writeFileSync(raw, Buffer.concat([hdr, Buffer.from(dst.buffer)]));
 const polished = path.join(TMP, 'voice.wav');
 const full = polishVoice(raw, polished);
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', polished, '-ac', '1', '-c:a', 'flac', path.join(DIR, 'voice.flac')]);
+execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', polished, '-af', 'volume=6dB,alimiter=limit=0.84:level=0', '-ac', '1', '-c:a', 'flac', path.join(DIR, 'voice.flac')]);
 
 // word (src, index) → output frame
 const frameOf = (src, i, at) => {
@@ -146,7 +180,7 @@ const frameOf = (src, i, at) => {
 };
 const segments = edl.segments.map((seg, si) => {
 	const cs = clips.filter((c) => c.seg === si);
-	return {src: seg.src, mode: seg.mode, from: cs[0].out, to: cs.at(-1).out + cs.at(-1).frames, cropW: edl.crop[seg.src].w};
+	return {src: seg.src, mode: seg.mode, from: cs[0].out, to: cs.at(-1).out + cs.at(-1).frames, cropW: (seg.crop ?? edl.crop[seg.src]).w};
 });
 const segEnd = (f) => segments.find((s) => f >= s.from && f < s.to).to;
 const cards = edl.cards.map((c) => ({...c, frame: frameOf(c.src, c.word, c.t)}));

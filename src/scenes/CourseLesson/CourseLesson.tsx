@@ -38,7 +38,7 @@ const PURPLE2 = "#5A2E85";
 const ORANGE = "#D97757";
 const CREAM = "#FBFAF8";
 const END = 150; // end card after the voice
-const FADE = 6;
+const FADE = 0; // hard cut between screen and talk (Adil 2026-11-09)
 
 export const calculateCourseMetadata: CalculateMetadataFunction<CourseLessonProps> = async ({ props }) => {
   const lesson: Lesson = await fetch(staticFile(`course/${props.lessonId}/lesson.json`)).then((r) => r.json());
@@ -56,7 +56,7 @@ const talkness = (segs: Seg[], f: number, total: number) => {
     const a = segs[i - 1];
     const b = segs[i];
     if (a.mode === b.mode) continue;
-    if (Math.abs(f - b.from) < FADE)
+    if (FADE > 0 && Math.abs(f - b.from) < FADE)
       v = interpolate(f, [b.from - FADE, b.from + FADE], [a.mode === "talk" ? 1 : 0, b.mode === "talk" ? 1 : 0], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
@@ -199,21 +199,9 @@ const Board: React.FC<{ lesson: Lesson }> = ({ lesson }) => {
       </div>
 
       {ending ? (
-        <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", gap: 40, opacity: endIn, transform: `scale(${0.9 + endIn * 0.1})` }}>
+        <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", gap: 40, opacity: 1 }}>
           <Img src={staticFile("course/logo.jpg")} style={{ width: 230, height: 230, borderRadius: "50%", boxShadow: "0 18px 50px rgba(65,33,97,0.3)" }} />
           <div style={{ fontSize: 84, fontWeight: 900, color: PURPLE }}>نلتقي بالدرس {lesson.lesson + 1}</div>
-          <div
-            style={{
-              fontSize: 42,
-              fontWeight: 700,
-              color: "#fff",
-              background: ORANGE,
-              padding: "16px 40px",
-              borderRadius: 999,
-            }}
-          >
-            ماستر كلاس مجاني: الرابط أول سطر بالوصف
-          </div>
         </AbsoluteFill>
       ) : hasCards ? (
         <>
@@ -338,7 +326,7 @@ export const CourseLesson: React.FC<CourseLessonProps> = ({ lessonId, lesson }) 
     <AbsoluteFill style={{ background: PURPLE }}>
       {t < 1 && <ScreenLayer lesson={lesson} lessonId={lessonId} />}
       {t > 0 && (
-        <AbsoluteFill style={{ opacity: t, transform: `scale(${1.03 - 0.03 * t})` }}>
+        <AbsoluteFill style={{ opacity: t }}>
           <Board lesson={lesson} />
         </AbsoluteFill>
       )}
