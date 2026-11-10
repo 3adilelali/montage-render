@@ -96,7 +96,7 @@ try {
 		out = path.join(OUTPUT_DIR, `${base} - مونتاج.mp4`);
 		for (let i = 2; fs.existsSync(out); i++) out = path.join(OUTPUT_DIR, `${base} - مونتاج ${i}.mp4`);
 	}
-	gh(['release', 'download', tag, '-R', REPO, '-p', 'final.mp4', '-O', out]);
+	gh(['release', 'download', tag, '-R', REPO, '-p', 'final.mp4', '-O', out, '--clobber']);
 	console.log(`\nSaved: ${out}`);
 	ok = true;
 } finally {
