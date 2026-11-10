@@ -182,10 +182,11 @@ hdr.writeUInt16LE(16, 34);
 hdr.write('data', 36);
 hdr.writeUInt32LE(dst.length * 2, 40);
 fs.writeFileSync(raw, Buffer.concat([hdr, Buffer.from(dst.buffer)]));
-// Voice (Adil's choice 2026-11-10, replaces denoise + loudnorm -14 + extra 6 dB, which hissed and squashed):
-// OBS already suppresses noise, so no second denoise; gentle compression, one loudness pass to -16 LUFS.
-const full = true;
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', raw, '-af', 'highpass=f=80,acompressor=threshold=-24dB:ratio=2.5:attack=15:release=200,loudnorm=I=-16:LRA=7:TP=-1.5', '-ar', '48000', '-ac', '1', '-c:a', 'flac', path.join(DIR, 'voice.flac')]);
+// Voice: the original polish (highpass + denoise + compressor + loudnorm -14) then ×1.5 (+3.5 dB) into a peak limiter.
+// Adil 2026-11-10: the old chain was fine (lesson 6's hiss was the mic itself); ×2 was a bit much → ×1.5.
+const polished = path.join(TMP, 'voice.wav');
+const full = polishVoice(raw, polished);
+execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', polished, '-af', 'volume=3.5dB,alimiter=limit=0.84:level=0', '-ac', '1', '-c:a', 'flac', path.join(DIR, 'voice.flac')]);
 
 // word (src, index) → output frame
 const frameOf = (src, i, at) => {
