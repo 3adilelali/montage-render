@@ -282,7 +282,9 @@ const joined = path.join(OUT, 'voice.joined.wav');
 const pcmBytes = Buffer.from(dst.buffer);
 fs.writeFileSync(joined, Buffer.concat([wavHeader(pcmBytes.length), pcmBytes]));
 const voice = path.join(OUT, 'voice.wav');
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', joined, '-af', `loudnorm=I=${LUFS}:TP=-1:LRA=11`, '-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', voice]);
+// --lufs off (Adil 2026-11-18): keep his voice exactly as recorded, no loudness change
+if (LUFS === 'off') fs.copyFileSync(joined, voice);
+else execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', joined, '-af', `loudnorm=I=${LUFS}:TP=-1:LRA=11`, '-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', voice]);
 fs.rmSync(joined, {force: true});
 
 // remap word times onto the new timeline

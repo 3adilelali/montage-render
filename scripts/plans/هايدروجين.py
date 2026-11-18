@@ -75,7 +75,7 @@ def CLIP(scene, n, kind, a, b=None, speed_max=None, **sh):
 # =============================== HOOK (0–160): energy
 sc(0, R(CLIP(0, 10, "prev", 3, 10, w=560, h=347), CLIP(0, 14, "fs", 10, 17, w=300, h=387),
         CLIP(0, 19, "game", 60, 67, w=560, h=275), gap=40), transition="zoom")
-sc(9, S(R(S(IC(FE("desktop-computer"), 13, "برنامج 3D", size="l"), X(14, w=170)),
+sc(13, S(R(S(IC(FE("desktop-computer"), 13, "برنامج 3D", size="l"), X(14, w=170)),
           S(IC(FE("film-projector"), 16, "مولّد فيديو", size="l"), X(18, w=170)), gap=140),
         BAN("جملة بالعربي… ومجاناً", [19, 22, 23, 24], tone="orange"), gap=50), transition="push")
 sc(25, S(T("بهالدرس… بإيدك", 25, size="m"), BAR("3 مستويات", [31, 32]), gap=40), transition="zoom", bg="rays")
@@ -277,6 +277,6 @@ chapters = {
 }
 
 src = json.loads((ROOT / "public/explainer/timeline.json").read_text(encoding="utf8"))["source"]
-PLAN.write_text(json.dumps({"source": src, "transition": "push", "music": {"volume": 0.025}, "sfxVolume": 0.5,
+PLAN.write_text(json.dumps({"source": src, "transition": "push", "music": {"volume": 0}, "sfxVolume": 0.045,
                             "calm": {"from": 161, "to": 1361}, "chapters": chapters, "scenes": scenes}, ensure_ascii=False, indent=1), encoding="utf8")
 print("scenes:", len(scenes), "clips:", len(clips))
