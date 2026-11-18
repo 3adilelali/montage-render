@@ -1,5 +1,5 @@
 // Render the montage on GitHub Actions (free, parallel) instead of this PC. Same output as scripts/render.mjs.
-// Usage: node scripts/cloud-render.mjs [--chunks N]
+// Usage: node scripts/cloud-render.mjs [--chunks N] [--frames N]  (--frames skips «remotion compositions» if its browser crashes)
 //        node scripts/cloud-render.mjs --course l1 --out "<lesson folder>/<name>.mp4"   (كورس كلود بالعربي: CourseLesson)
 // 1) pushes engine code to the public repo (no public/, no keys), 2) uploads public/ as job.tar to a temporary
 // release, 3) runs .github/workflows/render.yml, 4) downloads final.mp4 into المخرجات/, 5) deletes the release.
@@ -26,8 +26,8 @@ const PROPS = course ? JSON.stringify({lessonId: course, lesson: null}) : '{}';
 if (course) fs.writeFileSync(path.join(PUBLIC_DIR, 'course', course, 'props.json'), PROPS);
 // 0) assets + frame count
 if (!course && spawnSync('node', [q(path.join(SCRIPTS_DIR, 'sync-assets.mjs'))], {cwd: ENGINE, stdio: 'inherit', shell: true}).status !== 0) process.exit(1);
-const comps = spawnSync('npx', ['remotion', 'compositions', ...(course ? [`--props=${q(path.join(PUBLIC_DIR, 'course', course, 'props.json'))}`] : [])], {cwd: ENGINE, encoding: 'utf8', shell: true}).stdout;
-const frames = Number(comps.match(new RegExp(COMP + String.raw`\s+\d+\s+\d+x\d+\s+(\d+)`))?.[1] ?? comps.match(/Explainer\s+\d+\s+\d+x\d+\s+(\d+)/)?.[1]);
+const comps = arg('--frames') ? '' : spawnSync('npx', ['remotion', 'compositions', ...(course ? [`--props=${q(path.join(PUBLIC_DIR, 'course', course, 'props.json'))}`] : [])], {cwd: ENGINE, encoding: 'utf8', shell: true}).stdout;
+const frames = arg('--frames') ? Number(arg('--frames')) : Number(comps.match(new RegExp(COMP + String.raw`\s+\d+\s+\d+x\d+\s+(\d+)`))?.[1] ?? comps.match(/Explainer\s+\d+\s+\d+x\d+\s+(\d+)/)?.[1]);
 if (!frames) throw new Error('could not read the frame count');
 if (course && !arg('--out')) throw new Error('--out is required with --course');
 const ci = process.argv.indexOf('--chunks');

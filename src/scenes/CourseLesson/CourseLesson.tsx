@@ -30,6 +30,8 @@ type Lesson = {
   segments: Seg[];
   cards: Card[];
   headers: { text: string; frame: number }[];
+  endText?: string;
+  endSub?: string;
 };
 export type CourseLessonProps = { lessonId: string; lesson: Lesson | null };
 
@@ -115,7 +117,7 @@ const ScreenLayer: React.FC<{ lesson: Lesson; lessonId: string }> = ({ lesson, l
   );
 };
 
-const Board: React.FC<{ lesson: Lesson }> = ({ lesson }) => {
+export const Board: React.FC<{ lesson: Lesson }> = ({ lesson }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const total = lesson.durationInFrames;
@@ -201,7 +203,8 @@ const Board: React.FC<{ lesson: Lesson }> = ({ lesson }) => {
       {ending ? (
         <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", gap: 40, opacity: 1 }}>
           <Img src={staticFile("course/logo.jpg")} style={{ width: 230, height: 230, borderRadius: "50%", boxShadow: "0 18px 50px rgba(65,33,97,0.3)" }} />
-          <div style={{ fontSize: 84, fontWeight: 900, color: PURPLE }}>نلتقي بالدرس {lesson.lesson + 1}</div>
+          <div style={{ fontSize: 84, fontWeight: 900, color: PURPLE }}>{lesson.endText ?? `نلتقي بالدرس ${lesson.lesson + 1}`}</div>
+          {lesson.endSub && <div style={{ fontSize: 56, fontWeight: 800, color: PURPLE2, marginTop: -16 }}>{lesson.endSub}</div>}
         </AbsoluteFill>
       ) : hasCards ? (
         <>
@@ -347,3 +350,11 @@ export const CourseLesson: React.FC<CourseLessonProps> = ({ lessonId, lesson }) 
     </AbsoluteFill>
   );
 };
+
+// Section card between lessons in the full-course video (2026-11-11).
+export type CourseSectionProps = { n: number; name: string };
+export const CourseSection: React.FC<CourseSectionProps> = ({ n, name }) => (
+  <Board
+    lesson={{ title: "كورس كلود بالعربي", lesson: n, lessonTitle: name, durationInFrames: 0, width: 1920, height: 1080, segments: [], cards: [], headers: [], endText: `الدرس ${n}`, endSub: name }}
+  />
+);
