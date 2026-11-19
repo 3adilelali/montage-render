@@ -58,13 +58,25 @@ LOOK = {
     "game": ("crop=1920:942:0:88,scale=1640:806:flags=lanczos", 1640, 806),
     # the downloaded 720×1280 video
     "vert": ("scale=506:900:flags=lanczos", 506, 900),
+    # the prompt inside the Build input box (read big), per clip (2026-11-19, measured on full frames)
+    "box3": ("crop=880:80:620:468,scale=1760:160:flags=lanczos,unsharp=5:5:0.6", 1760, 160),
+    "box11": ("crop=880:160:620:438,scale=1584:288:flags=lanczos,unsharp=5:5:0.6", 1584, 288),
+    "box17": ("crop=880:130:620:452,scale=1584:234:flags=lanczos,unsharp=5:5:0.6", 1584, 234),
+    # one sent chat message (bubble), read big
+    "bub776": ("crop=520:70:10:766,scale=1560:210:flags=lanczos,unsharp=5:5:0.6", 1560, 210),
+    "bub750": ("crop=520:70:10:750,scale=1560:210:flags=lanczos,unsharp=5:5:0.6", 1560, 210),
+    "bub746": ("crop=520:90:10:746,scale=1560:270:flags=lanczos,unsharp=5:5:0.6", 1560, 270),
+    "bub13": ("crop=520:290:10:540,scale=1040:580:flags=lanczos,unsharp=5:5:0.5", 1040, 580),
 }
 
-def CLIP(scene, n, kind, a, b=None, speed_max=None, **sh):
-    """Clip n of المقطّع, local seconds [a,b] (b=None → still frame at a), fitted to the scene that starts at word `scene`."""
-    name = f"هيد-{len(clips) + 1:02d}"
-    clips.append({"name": name, "n": n, "kind": kind, "a": a, "b": b if b is not None else a + 0.1, "from": scene,
-                  "still": b is None, "smax": speed_max})
+import hashlib
+def CLIP(scene, n, kind, a, b=None, speed_max=None, segs=None, **sh):
+    """Clip n of المقطّع, local seconds [a,b] (b=None → still frame at a), fitted to the scene that starts at word `scene`.
+    segs=[(src_a, src_b, out_s), …] retimes each piece on its own (src_a==src_b → hold that frame), so clicks meet words."""
+    spec = {"n": n, "kind": kind, "a": a, "b": b if b is not None else a + 0.1, "from": scene, "still": b is None,
+            "segs": segs, "look": LOOK[kind][0]}
+    name = "هيد-" + hashlib.md5(json.dumps(spec, sort_keys=True).encode()).hexdigest()[:8]
+    clips.append({"name": name, **spec})
     _, w, h = LOOK[kind]
     d = {"type": "shot", "file": name, "word": scene, "w": w, "h": h, "loop": False}
     if "pointer" in sh: sh["pointer"] = [{"word": p[0], "x": p[1], "y": p[2]} for p in sh["pointer"]]
@@ -101,39 +113,37 @@ sc(148, S(BAN("ببلاش، وبالعربي، وطريقة مجرّبة", [148,
    transition="zoom")
 
 # =============================== 1: الأداة (161–244) — calm from here
-sc(161, CLIP(161, 1, "page", 0.2, 8.5, label="aistudio.google.com", labelBelow=True,
-             pointer=[(169, 50, 6), (175, 50, 40), (181, 38, 50)]), transition="push")
-sc(188, CLIP(188, 2, "page", 0, 9, label="Build ← New app", labelBelow=True, pointer=[(188, 4, 24), (196, 50, 52)]), transition="fade")
-sc(205, CLIP(205, 1, "page", 9.5, 14.5, label="Gemini 4 Hydrogen", labelBelow=True, pointer=[(205, 55, 30)],
-             zoom=[(207, 55, 30, 1.6)]), transition="fade")
-sc(222, R(CLIP(222, 1, "page", 14.5, 22, w=1180, h=579, pointer=[(225, 6, 84)], zoom=[(226, 15, 80, 1.7)]),
+sc(161, CLIP(161, 1, "page", 4.8, 8.5, segs=[(4.8, 8.5, 10.7)], label="aistudio.google.com", labelBelow=True,
+             pointer=[(170, 4.5, 3.2)]), transition="push")
+sc(188, CLIP(188, 2, "page", 0, 9, segs=[(0, 3.4, 2.4), (3.4, 9, 4.6)], label="Build ← New app", labelBelow=True,
+             pointer=[(188, 3.9, 22.9), (196, 55.3, 40)]), transition="fade")
+sc(205, CLIP(205, 1, "page", 9.5, 14.5, label="Gemini 4 Hydrogen", labelBelow=True, pointer=[(205, 55.3, 28.6)],
+             zoom=[(207, 55.3, 28.6, 1.6)]), transition="fade")
+sc(222, R(CLIP(222, 1, "page", 14.5, 22, w=1180, h=579, pointer=[(225, 5.7, 83.8)], zoom=[(226, 12, 80, 1.7)]),
           S(BAN("Gemini 4 Carbon", [228, 229, 230, 231], tone="magenta", fs=44), T("هذا المدفوع", 232, size="m"),
             T("وما منحتاجه أبداً", 235, size="s"), T("كل الدرس بالمجاني ✓", 238, size="s", tone="green"), gap=20), gap=50), transition="fade")
 
 # =============================== 2: المستوى 1 — الصحراء (245–542)
 sc(245, R(CLIP(245, 4, "prev", 14, 26, w=1100, h=682), S(DISC(1, 245), T("مشهد 3D\nبتحرّكه بإيدك", 251, size="l"), gap=16), gap=60), transition="push")
-sc(256, R(CLIP(256, 3, "page", 0, 2, w=1180, h=579, zoom=[(266, 50, 47, 1.9)], pointer=[(266, 45, 48)]),
-          S(T("بالعربي عادي", 258, size="m"), T("مثل ما بتحكي مع أي حدا", 260, size="s"), gap=16), gap=50), transition="fade")
-sc(297, R(CLIP(297, 3, "page", 1, w=1100, h=540, zoom=[(297, 50, 47, 1.9)]),
-          S(T("لاحظ شو حكيتله:", 297, size="m"),
-            {"type": "checklist", "items": [{"text": "المكان", "word": 303}, {"text": "الوقت", "word": 304},
-                                            {"text": "شو بالمشهد", "word": 305}, {"text": "كيف بتتحكّم", "word": 308}], "word": 301, "fs": 46, "w": 520},
-            T("الطلب أوضح = نتيجة أقرب", 312, size="s", tone="green"), gap=20), gap=50), transition="fade")
+sc(256, S(S(T("بتكتب الطلب بالعربي عادي", 256, size="m"), T("مثل ما بتحكي مع أي حدا", 260, size="s"), gap=10),
+          CLIP(256, 3, "box3", 1.5, 3.5, segs=[(1.5, 3.5, 3.0), (4.2, 4.2, 13.0)], label="طلب الصحراء", labelBelow=True), gap=60), transition="fade")
+sc(297, S(CLIP(297, 3, "box3", 4.2, segs=[(4.2, 4.2, 10.0)]),
+          R({"type": "checklist", "items": [{"text": "المكان", "word": 303}, {"text": "الوقت", "word": 304},
+                                            {"text": "شو بالمشهد", "word": 305}, {"text": "كيف بتتحكّم", "word": 308}], "word": 301, "fs": 42, "w": 460},
+            S(T("لاحظ شو حكيتله", 297, size="m"), T("الطلب أوضح = نتيجة أقرب", 312, size="s", tone="green"), gap=16), gap=80), gap=50), transition="fade")
 sc(322, S(BAN("كل البرومبتات بوصف هالفيديو", [322, 324, 329, 330, 331], tone="orange"), V(FE("backhand-index-pointing-down"), 331, size="l"), gap=20), transition="fade")
 sc(336, R(CLIP(336, 3, "app", 8, 20.9, w=1180, h=579), S(T("هو بيكتب الكود لحاله", 341, size="m"),
           S({"type": "counter", "to": 3, "word": 349, "size": "l"}, T("دقايق تقريباً", 351, size="s"), gap=4),
           T("وما في داعي تفهم ولا سطر", 352, size="s", tone="green"), gap=20), gap=50), transition="fade")
-sc(365, CLIP(365, 4, "prev", 0, 37.3, label="النتيجة: صحراء 3D بتحرّكها بالماوس", labelBelow=True,
-             pointer=[(376, 50, 50), (386, 77, 93)]), transition="fade")
+sc(365, CLIP(365, 4, "prev", 2, 30, segs=[(2, 20.3, 18.2), (20.3, 30, 2.1)], label="النتيجة: صحراء 3D بتحرّكها بالماوس", labelBelow=True,
+             pointer=[(387, 65.2, 90.4)]), transition="fade")
 sc(397, R(V(FE("memo"), 401, size="l"), S(T("بدك تغيّر شي؟", 401, size="m"), T("ما بتعيد الطلب من الأول", 405, size="m"),
           BAN("التعديل = جملة وحدة", [410, 412, 413, 414], tone="orange"), gap=20), gap=70), transition="fade")
-sc(420, R(CLIP(420, 5, "chat", 0, 15.1, w=480, h=764), S(DISC(1, 420, size="s"), T("قافلة 3 جمال", 424, size="m"),
-          T("والرمل بيتحرّك مع الهوا", 432, size="s"), gap=16), gap=80), transition="fade")
+sc(420, S(R(DISC(1, 420, size="s"), T("التعديل الأول: قافلة", 420, size="m"), gap=24), CLIP(420, 5, "bub776", 14.5, segs=[(14.5, 14.5, 6.5)]), gap=50), transition="fade")
 sc(437, CLIP(437, 6, "app", 12, 26, label="أقل من دقيقتين… والقافلة ماشية", labelBelow=True), transition="fade")
-sc(453, R(CLIP(453, 7, "chat", 0, 7.8, w=480, h=764), S(DISC(2, 453, size="s"), T("خيمة ونار مولّعة", 459, size="m"), gap=16), gap=80), transition="fade")
+sc(453, S(R(DISC(2, 453, size="s"), T("التعديل الثاني: خيمة ونار", 453, size="m"), gap=24), CLIP(453, 7, "bub776", 7.4, segs=[(7.4, 7.4, 4.0)]), gap=50), transition="fade")
 sc(463, CLIP(463, 8, "prev", 4, 14, label="الخيمة والنار بتضوي بالليل", labelBelow=True), transition="fade")
-sc(475, R(CLIP(475, 9, "chat", 0, 16.6, w=480, h=764), S(DISC(3, 475, size="s"), T("جولة سينمائية\n15 ثانية", 482, size="m"),
-          T("وبعدين ترجع لإيدك", 493, size="s"), gap=16), gap=80), transition="fade")
+sc(475, S(R(DISC(3, 475, size="s"), T("التعديل الثالث: جولة سينمائية", 475, size="m"), gap=24), CLIP(475, 9, "bub750", 16.4, segs=[(16.4, 16.4, 9.0)]), gap=50), transition="fade")
 sc(496, CLIP(496, 10, "prev", 0, 41.3, label="جولة الكاميرا… كأنها درون", labelBelow=True), transition="fade")
 sc(520, R(CNT(4, 521, "رسائل بس"), S(T("مشهد 3D كامل بإيدك", 524, size="m"),
           R(S(IC(FE("desktop-computer"), 533, "برنامج 3D", size="m"), X(534, w=110)), S(IC(FE("money-bag"), 538, "ولا قرش", size="m"), X(540, w=110)), gap=80),
@@ -142,13 +152,10 @@ sc(520, R(CNT(4, 521, "رسائل بس"), S(T("مشهد 3D كامل بإيدك",
 # =============================== 3: المستوى 2 — برج خليفة (543–1003)
 sc(543, R(CLIP(543, 20, "vert", 0, 20, w=380, h=676), S(T("شي بينشر على طول", 545, size="m"), T("فيديو طولي لبرج خليفة", 553, size="s"),
           BAN("وسر بسيط", [557, 559, 560, 561], tone="orange"), T("قليل اللي بيحكوا عنه", 566, size="s"), gap=20), gap=90), transition="push")
-sc(570, R(CLIP(570, 11, "page", 0, 14, w=1180, h=579, pointer=[(583, 3, 24)], zoom=[(594, 50, 47, 1.8)]),
+sc(570, R(CLIP(570, 11, "page", 0, 9.5, segs=[(0, 6, 10.3), (6, 9.5, 3.5)], w=1180, h=579, pointer=[(587, 3.9, 22.9)],
+                zoom=[(594, 55.3, 48.3, 1.8)]),
           S(DISC(2, 570), T("كيف انبنى\nبرج خليفة؟", 579, size="l"), T("مشروع جديد + Hydrogen", 583, size="s"), gap=16), gap=50), transition="push")
-sc(603, R(CLIP(603, 11, "page", 13.5, w=1000, h=491, zoom=[(603, 50, 47, 1.8)]),
-          {"type": "checklist", "items": [{"text": "عمودي 9:16، 20 ثانية", "word": 605}, {"text": "طابق ورا طابق", "word": 612},
-                                          {"text": "عداد طوابق وطول", "word": 618}, {"text": "خلفية دبي وقت الغروب", "word": 625},
-                                          {"text": "4 جمل بالعربي", "word": 629}, {"text": "828 م • 163 طابق • 2010", "word": 637}],
-           "word": 603, "fs": 40, "w": 640}, gap=40), transition="fade")
+sc(603, S(T("الطلب كامل", 603, size="m"), CLIP(603, 11, "box11", 8.0, segs=[(8.0, 8.0, 18.0)], w=1760, h=320), gap=40), transition="fade")
 sc(642, R(S(V(FE("mobile-phone"), 643, size="xl"), T("9:16", 644, size="m")),
           R(IC("logos:instagram-icon", 650, "Reels", size="m"), IC("logos:youtube-icon", 652, "Shorts", size="m"),
             IC("logos:tiktok-icon", 654, "TikTok", size="m"), gap=60), gap=100), transition="fade")
@@ -161,11 +168,12 @@ sc(712, R(CLIP(712, 12, "fs", 30.6, w=520, h=671),
             T("كم مكعب حوالين البرج بس", 725, size="s"), T("والكتابة صغيرة على الموبايل", 730, size="s"), gap=20), gap=80), transition="fade")
 sc(734, R(S(V(FE("writing-hand"), 751, size="l"), X(758, w=170)), S(T("أغلب الناس لما النتيجة ما بتعجبهم", 743, size="m"),
           T("بيرجعوا يكتبوا الطلب من الأول… أطول", 751, size="s"), BAN("وهذا مو الحل", [758, 759, 760], tone="magenta"), gap=20), gap=80), transition="glitch")
-sc(761, CLIP(761, 13, "page", 2.5, 23.5, label="⭐ السر: لقطة شاشة… وبتلصقها بخانة الكتابة", labelBelow=True), transition="flash")
-sc(781, R(CLIP(781, 13, "chat", 24.7, 41, w=520, h=828), S(T("وبتحكيله شو الغلط بالضبط", 781, size="m"),
+sc(761, CLIP(761, 13, "page", 0.5, 30, segs=[(0.5, 2, 1.4), (2, 8.5, 2.8), (8.5, 22, 1.0), (22, 26.5, 1.6), (26.5, 30, 1.2)],
+             label="⭐ السر: لقطة شاشة… وبتلصقها بخانة الكتابة", labelBelow=True), transition="flash")
+sc(781, R(CLIP(781, 13, "bub13", 40.5, segs=[(40.5, 40.5, 11.0)]), S(T("وبتحكيله شو الغلط بالضبط", 781, size="m"),
           {"type": "checklist", "items": [{"text": "الخلفية ما بتبين دبي", "word": 795}, {"text": "ناطحات سحاب", "word": 800},
                                           {"text": "كبّر الكتابة", "word": 805}, {"text": "الكاميرا تلف حوالين البرج", "word": 807}],
-           "word": 795, "fs": 42, "w": 560}, gap=20), gap=70), transition="fade")
+           "word": 795, "fs": 38, "w": 520}, gap=20), gap=60), transition="fade")
 sc(811, S(R(S(V(FE("robot"), 814, size="l"), T("كتب كود… وما شاف النتيجة", 821, size="s"), gap=8), ARR(825, w=110, flip=True),
             S(V(FE("framed-picture"), 826, size="l"), T("لما تورجيه الصورة", 826, size="s"), gap=8), gap=80),
           T("بيعرف شو الغلط بالضبط ✓", 828, size="m", tone="green"), T("بدل ما يخمّن من كلامك", 833, size="s"), gap=24), transition="fade")
@@ -180,28 +188,27 @@ sc(876, R(CLIP(876, 14, "fs", 26.2, w=520, h=671), S(T("راجع الأرقام 
 sc(913, R(V(FE("inbox-tray"), 921, size="l"), S(T("كيف بنطلّعه فيديو؟", 921, size="m"),
           R(S(IC(FE("video-camera"), 931, "تسجيل الشاشة", size="m"), gap=0), T("أو", 935, size="m"),
             IC(FE("red-circle"), 940, "زر بيسجّل لحاله", size="m"), gap=60), T("طريقة أسهل بكثير ✓", 937, size="s", tone="green"), gap=20), gap=70), transition="fade")
-sc(948, R(CLIP(948, 15, "chat", 0, 19, w=520, h=828), S(T("زيد زر «سجّل فيديو»", 950, size="m"), T("بيعيد الأنيميشن… وبيسجّله", 956, size="s"),
-          T("وبينزّل ملف فيديو", 962, size="s", tone="green"), gap=16), gap=80), transition="fade")
-sc(966, CLIP(966, 16, "app", 0, 29.3, label="بدقيقة صار في زر «سجّل فيديو»", labelBelow=True, pointer=[(973, 77, 97)]), transition="fade")
+sc(948, S(T("زيد زر «سجّل فيديو»", 948, size="m"), CLIP(948, 15, "bub746", 16, segs=[(16, 16, 7.5)]),
+          T("بيعيد الأنيميشن… وبيسجّله… وبينزّل ملف فيديو", 956, size="s", tone="green"), gap=40), transition="fade")
+sc(966, CLIP(966, 16, "app", 0, 26, segs=[(0, 2.4, 3.0), (2.4, 24.6, 3.6), (24.6, 26, 0.6)], label="بدقيقة صار في زر «سجّل فيديو»", labelBelow=True,
+             pointer=[(970, 67.2, 91.7)]), transition="fade")
 sc(985, R(CLIP(985, 20, "vert", 0, 20, w=480, h=853), S(T("الفيديو اللي نزل", 985, size="m"), T("عمودي • 20 ثانية", 990, size="s"),
           T("جاهز Reel أو Short", 993, size="s", tone="green"), T("بلا أي برنامج", 1001, size="s"), gap=18), gap=90), transition="fade")
 
 # =============================== 4: المستوى 3 — سباق الهجن (1004–1214)
 sc(1004, R(CLIP(1004, 18, "game", 8, 20, w=1060, h=520), S(DISC(3, 1004), T("لعبة 3D", 1016, size="l"), T("بتلعبها وبتبعتها لأي حدا", 1018, size="s"), gap=16), gap=50), transition="push")
-sc(1022, R(CLIP(1022, 17, "page", 0, 14, w=1000, h=491, zoom=[(1028, 50, 47, 1.8)]),
-           S(T("«سباق الهجن»", 1035, size="m"),
-             {"type": "checklist", "items": [{"text": "جمل بالأسهم يمين ويسار", "word": 1037}, {"text": "تمر بتجمعه", "word": 1048},
-                                             {"text": "صخور بتتفاداها", "word": 1052}, {"text": "نقاط ووقت بالعربي", "word": 1055},
-                                             {"text": "باللمس على الموبايل", "word": 1075}],
-              "word": 1037, "fs": 36, "w": 560}, gap=12), gap=40), transition="fade")
+sc(1022, CLIP(1022, 17, "page", 3, 7.5, segs=[(3, 7.5, 3.3)], label="New app ← Hydrogen", labelBelow=True,
+              pointer=[(1022, 3.9, 22.9), (1025, 55.3, 28.6)]), transition="fade")
+sc(1029, S(T("«سباق الهجن»", 1029, size="m"), CLIP(1029, 17, "box17", 10.0, segs=[(10.0, 10.0, 22.0)], w=1760, h=260), gap=40), transition="fade")
 sc(1080, R(CLIP(1080, 17, "app", 15, 86, w=1100, h=540), S(T("كتبتله قواعد اللعبة كاملة", 1080, size="m"),
            T("كيف بتلعب • شو بتجمع • شو بيخسّرك", 1087, size="s"), T("لعبة كاملة من أول مرة ✓", 1098, size="s", tone="green"),
            S({"type": "counter", "to": 3, "word": 1108, "size": "l"}, T("دقايق تقريباً", 1109, size="s"), gap=4), gap=18), gap=50), transition="fade")
 sc(1111, CLIP(1111, 18, "app", 0, 15, label="سباق الهجن", labelBelow=True), transition="fade")
 sc(1128, R(CLIP(1128, 18, "prev", 18, 33, w=1060, h=657), S(T("وشي ما طلبته:", 1128, size="m"), T("السرعة بتزيد شوي شوي", 1132, size="s"),
            T("وصوت لما تاكل تمرة", 1135, size="s"), T("عمله لحاله ✓", 1147, size="s", tone="green"), gap=16), gap=60), transition="fade")
-sc(1150, CLIP(1150, 19, "page", 4, 26.5, label="Share ← الوصول عام ← Copy link", labelBelow=True,
-              pointer=[(1160, 59, 2), (1165, 72, 6), (1173, 74, 52)]), transition="push")
+sc(1150, CLIP(1150, 19, "page", 4, 26.5, segs=[(4, 4, 3.7), (4, 8, 0.9), (8, 13, 1.4), (13, 22, 1.2), (22, 26.5, 2.4)],
+              label="Share ← الوصول عام ← Copy link", labelBelow=True,
+              pointer=[(1150, 89.7, 3.2), (1165, 85.4, 15.1), (1173, 85.9, 95.5)]), transition="push")
 sc(1179, CLIP(1179, 19, "game", 55, 68, label="نفس الرابط… بصفحة جديدة", labelBelow=True), transition="fade")
 sc(1205, S(BAN("رابط لعبتي بوصف هالفيديو", [1205, 1207, 1208, 1212, 1213], tone="orange"), T("جرّبها", 1214, size="l", tone="green"),
            ARR(1213, w=200, rotate=70), gap=20), transition="fade")
@@ -252,13 +259,26 @@ if "--clips" in sys.argv:
         dur = scene_len(c["from"]) + 0.8
         a, b = max(0.0, c["a"]), min(c["b"], full - 0.05)
         look = LOOK[c["kind"]][0] + ",fps=30"
-        if c["still"] or (b - a) <= dur:
+        out = OUTD / f"{c['name']}.mp4"
+        if out.exists() and abs(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
+                                capture_output=True, text=True).stdout or 0) - dur) < 0.15:
+            continue
+        if c["segs"]:
+            parts, labels = [], []
+            for i, (sa, sb, so) in enumerate(c["segs"]):
+                if sb - sa < 0.05:
+                    parts.append(f"[0:v]trim={sa}:{sa + 0.04},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={so:.3f},trim=0:{so:.3f}[p{i}]")
+                else:
+                    parts.append(f"[0:v]trim={sa}:{sb},setpts=(PTS-STARTPTS)*{so / (sb - sa):.5f}[p{i}]")
+                labels.append(f"[p{i}]")
+            vf = ";".join(parts) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=1:a=0,{look},tpad=stop_mode=clone:stop_duration=1.5"
+            speed = 0
+        elif c["still"] or (b - a) <= dur:
             speed = 1.0
             vf = f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,{look},tpad=stop_mode=clone:stop_duration={dur - (b - a) + 0.5:.2f}"
         else:
             speed = (b - a) / dur
             vf = f"[0:v]trim={a}:{b},setpts=(PTS-STARTPTS)/{speed:.4f},{look}"
-        out = OUTD / f"{c['name']}.mp4"
         r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-filter_complex", vf, "-an", "-t", f"{dur:.2f}",
                             "-c:v", "libx264", "-crf", "17", "-preset", "fast", "-pix_fmt", "yuv420p", str(out)], capture_output=True, text=True)
         if r.returncode: print("FAIL", c["name"], r.stderr[:400]); continue
@@ -277,6 +297,6 @@ chapters = {
 }
 
 src = json.loads((ROOT / "public/explainer/timeline.json").read_text(encoding="utf8"))["source"]
-PLAN.write_text(json.dumps({"source": src, "transition": "push", "music": {"volume": 0}, "sfxVolume": 0.045,
+PLAN.write_text(json.dumps({"source": src, "transition": "push", "music": {"volume": 0.06}, "sfxVolume": 0.5,
                             "calm": {"from": 161, "to": 1361}, "chapters": chapters, "scenes": scenes}, ensure_ascii=False, indent=1), encoding="utf8")
 print("scenes:", len(scenes), "clips:", len(clips))
